@@ -28,6 +28,12 @@ public class UsageMP {
         this.ump8 = ump8;
     }
 
+    public int describeContents(){
+
+
+        return 0;
+    }
+
     public String getSdate() {
         return sdate;
     }
@@ -123,4 +129,5 @@ public class UsageMP {
                 ", ump8=" + ump8 +
                 '}';
     }
+
 }
