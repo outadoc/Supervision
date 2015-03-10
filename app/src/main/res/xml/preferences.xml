@@ -7,22 +7,26 @@
 		<EditTextPreference
 			android:id="@+id/pref_bdd_hostname"
 			android:title="Nom d'hôte"
-			android:summary="Entrez le nom d'hôte du serveur SQL Express" />
+			android:summary="Entrez le nom d'hôte du serveur SQL Express"
+			android:defaultValue="@string/default_pref_bdd_hostname" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_port"
 			android:title="Port"
-			android:summary="Entrez le numéro de port du serveur SQL Express" />
+			android:summary="Entrez le numéro de port du serveur SQL Express"
+			android:defaultValue="@string/default_pref_bdd_port" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_username"
 			android:title="Nom d'utilisateur"
-			android:summary="Entrez le nom du compte autorisé" />
+			android:summary="Entrez le nom du compte autorisé"
+			android:defaultValue="@string/default_pref_bdd_username" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_password"
 			android:title="Mot de passe"
-			android:summary="Entrez le mot de passe de connexion" />
+			android:summary="Entrez le mot de passe de connexion"
+			android:defaultValue="@string/default_pref_bdd_password" />
 
 	</PreferenceCategory>
 
@@ -32,17 +36,20 @@
 		<EditTextPreference
 			android:id="@+id/pref_snmp_hostname"
 			android:title="Nom d'hôte"
-			android:summary="Entez le nom d'hôte du serveur SNMP" />
+			android:summary="Entez le nom d'hôte du serveur SNMP"
+			android:defaultValue="@string/default_pref_snmp_hostname" />
 
 		<EditTextPreference
 			android:id="@+id/pref_snmp_port"
 			android:title="Port SNMP"
-			android:summary="Entrez le numéro de port du serveur SNMP" />
+			android:summary="Entrez le numéro de port du serveur SNMP"
+			android:defaultValue="@string/default_pref_snmp_port" />
 
 		<EditTextPreference
 			android:id="@+id/pref_snmp_password"
 			android:title="Communauté SNMP en lecture"
-			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture" />
+			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture"
+			android:defaultValue="@string/default_pref_snmp_password" />
 
 	</PreferenceCategory>
 
@@ -52,17 +59,20 @@
 		<EditTextPreference
 			android:id="@+id/pref_snmp_temp_hostname"
 			android:title="Nom d'hôte"
-			android:summary="Entez le nom d'hôte de la sonde SNMP" />
+			android:summary="Entez le nom d'hôte de la sonde SNMP"
+			android:defaultValue="@string/default_pref_snmp_temp_hostname" />
 
 		<EditTextPreference
 			android:id="@+id/pref_snmp_temp_port"
 			android:title="Port SNMP"
-			android:summary="Entrez le numéro de port de la sonde SNMP" />
+			android:summary="Entrez le numéro de port de la sonde SNMP"
+			android:defaultValue="@string/default_pref_snmp_temp_port" />
 
 		<EditTextPreference
 			android:id="@+id/pref_snmp_temp_password"
 			android:title="Communauté SNMP en lecture"
-			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde" />
+			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde"
+			android:defaultValue="@string/default_pref_snmp_temp_password" />
 
 	</PreferenceCategory>
 
