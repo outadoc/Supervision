@@ -3,14 +3,14 @@ package bass.candellier.lefevre.supervision;
 /**
  * Created by Yannick on 10/03/2015.
  */
-public class TEMP {
+public class Temp {
 
     private String sdate;
     private String temp;
     private String nomBaie;
 
 
-    public TEMP(String sdate, String temp, String nomBaie) {
+    public Temp(String sdate, String temp, String nomBaie) {
         this.sdate = sdate;
         this.temp = temp;
         this.nomBaie = nomBaie;
