@@ -1,35 +1,32 @@
 package bass.candellier.lefevre.supervision;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 
-
-public class MainActivity extends ActionBarActivity {
+public class SetPreferencesFragmentActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-	}
+		setContentView(R.layout.activity_preferences);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		getFragmentManager().beginTransaction()
+				.replace(R.id.content, new PreferencesFragment())
+				.commit();
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-			case R.id.action_settings: {
-				startActivity(new Intent(this, SetPreferencesFragmentActivity.class));
+			case android.R.id.home:
+				finish();
 				return true;
-			}
 		}
 
 		return super.onOptionsItemSelected(item);
 	}
+
 }
