@@ -2,6 +2,7 @@ package bass.candellier.lefevre.supervision;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 
 public class SetPreferencesFragmentActivity extends ActionBarActivity {
 
@@ -16,4 +17,16 @@ public class SetPreferencesFragmentActivity extends ActionBarActivity {
 				.replace(R.id.content, new PreferencesFragment())
 				.commit();
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
 }
