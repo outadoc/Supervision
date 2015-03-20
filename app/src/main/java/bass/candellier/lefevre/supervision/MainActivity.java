@@ -19,6 +19,9 @@ public class MainActivity extends ActionBarActivity {
 	private ProgressBar progressBar;
 	private TextView lblProgressStatus;
 
+	private SnmpGetTask hwTask;
+	private SnmpGetTaskSonde sondeTask;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,6 +33,32 @@ public class MainActivity extends ActionBarActivity {
 
 		progressBar = (ProgressBar) findViewById(R.id.progress_status);
 		lblProgressStatus = (TextView) findViewById(R.id.lbl_progress_status);
+
+		hwTask = new SnmpGetTask(this, new SnmpTaskListener() {
+			@Override
+			public void onResult(String[] vars) {
+				if(vars == null) {
+					throw new RuntimeException("SNMP a retourné null");
+				}
+
+				int freeDisk = Integer.parseInt(vars[1]) / Integer.parseInt(vars[0]);
+
+				lblUtilisationDisque.setText(String.valueOf(freeDisk) + "%");
+			}
+		});
+
+		sondeTask = new SnmpGetTaskSonde(this, new SnmpTaskListener() {
+			@Override
+			public void onResult(String[] vars) {
+				if(vars == null) {
+					throw new RuntimeException("SNMP a retourné null pour sonde");
+				}
+
+				lblTemperatureBaie.setText(vars[0] + "°C");
+			}
+		});
+
+		refreshInterface();
 	}
 
 	@Override
@@ -48,6 +77,17 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void refreshInterface() {
+		hwTask.execute(new String[]{
+				SnmpGetTask.OID_HDD_USAGE,
+				SnmpGetTask.OID_HDD_CAPACITY
+		});
+
+		sondeTask.execute(new String[]{
+				SnmpGetTaskSonde.OID_SONDE_TEMP
+		});
 	}
 
 }
