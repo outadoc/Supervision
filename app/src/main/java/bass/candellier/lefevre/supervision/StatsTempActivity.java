@@ -66,13 +66,6 @@ public class StatsTempActivity extends ActionBarActivity {
 
     }
 
-    public void printExceptionMessageOnUIThread(Exception e) {
-
-    }
-
-    public void startThreadLectureTemp(ClientSQLmetier base) {
-
-    }
 
     public void addNewLigneTemp(Temp temp) {
 
@@ -110,7 +103,7 @@ public class StatsTempActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            liste = new ArrayAdapter(StatsTempActivity.this, android.R.layout.simple_list_item_1, resRequete);
+            liste = new ArrayUsageTempAdapter(StatsTempActivity.this, android.R.layout.simple_list_item_1, resRequete);
             listeView.setAdapter(liste);
             liste.notifyDataSetChanged();
         }
