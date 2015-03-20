@@ -6,6 +6,7 @@
 	<item
 		android:id="@+id/action_liste_temperature"
 		android:title="@string/liste_temperature"
+		android:icon="@drawable/ic_thermometer"
 		app:showAsAction="ifRoom" />
 
 	<item
