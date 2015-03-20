@@ -32,16 +32,9 @@ public class ClientSQLmetier {
             conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
         }
         Log.i(TAG, "open BDD");
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        PreparedStatement prepstmt = conn.prepareStatement("SELECT * FROM ( SELECT * FROM UsageDD ORDER BY date desc ) WHERE rownum <= ?");
-        prepstmt.setInt(1, nb);
-        ResultSet result = prepstmt.executeQuery();
-        if (prepstmt != null) {
-            prepstmt.close();
-        }
-        if (stmt != null) {
-            stmt.close();
-        }
+
+        Statement stmt = conn.createStatement();
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date ");
         return result;
     }
 
@@ -50,16 +43,8 @@ public class ClientSQLmetier {
             conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
         }
         Log.i(TAG, "open BDD");
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        PreparedStatement prepstmt = conn.prepareStatement("SELECT * FROM ( SELECT * FROM UsageMP ORDER BY date desc ) WHERE rownum <= ?");
-        prepstmt.setInt(1, nb);
-        ResultSet result = prepstmt.executeQuery();
-        if (prepstmt != null) {
-            prepstmt.close();
-        }
-        if (stmt != null) {
-            stmt.close();
-        }
+        Statement stmt = conn.createStatement();
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageMP ORDER BY date ");
         return result;
     }
 
@@ -68,16 +53,8 @@ public class ClientSQLmetier {
             conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
         }
         Log.i(TAG, "open BDD");
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        PreparedStatement prepstmt = conn.prepareStatement("SELECT * FROM ( SELECT * FROM Temperatures ORDER BY date desc ) WHERE rownum <= ?");
-        prepstmt.setInt(1, nb);
-        ResultSet result = prepstmt.executeQuery();
-        if (prepstmt != null) {
-            prepstmt.close();
-        }
-        if (stmt != null) {
-            stmt.close();
-        }
+        Statement stmt = conn.createStatement();
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM Temperatures ORDER BY date ");
         return result;
     }
 

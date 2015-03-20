@@ -31,6 +31,7 @@ public class StatsTempActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new Recuperation().execute();
+        setContentView(R.layout.activity_stats_temp);
         listeView = (ListView) findViewById(R.id.liste_stats_temp);
     }
 
@@ -67,14 +68,17 @@ public class StatsTempActivity extends Activity {
                 String port = prefs.getString(PreferencesFragment.PREFKEY_PORT, "1433");
                 String username = prefs.getString(PreferencesFragment.PREFKEY_USERNAME, "supervision");
                 String password = prefs.getString(PreferencesFragment.PREFKEY_PASSWORD, "Password1234");
+
                 try {
-                    clientBdd = new ClientSQLmetier(ip, port, "Temperatures", username, password, 5);
+                    clientBdd = new ClientSQLmetier(ip, "Supervision", username, password, port, 10);
                 } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+
                 ResultSet tab = clientBdd.getTableTemperatures(n);
+
                 while (tab.next()) {
-                    resRequete.add(new Temp(tab.getString("sdate"), tab.getString("temp"), tab.getString("nomBaie")));
+                    resRequete.add(new Temp(tab.getString("date"), tab.getString("temp"), tab.getString("MachineName")));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
