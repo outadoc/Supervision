@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ public class MainActivity extends ActionBarActivity {
 
 	private ProgressBar progressBar;
 	private TextView lblProgressStatus;
+    private Button buttonListeTemp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,16 @@ public class MainActivity extends ActionBarActivity {
 
 		progressBar = (ProgressBar) findViewById(R.id.progress_status);
 		lblProgressStatus = (TextView) findViewById(R.id.lbl_progress_status);
+
+        buttonListeTemp = (Button) findViewById(R.id.btn_liste_temperature);
+        buttonListeTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Class c = StatsTempActivity.class;
+                Intent i = new Intent(MainActivity.this, c);
+                startActivityForResult(i, 1);
+            }
+        });
 	}
 
 	@Override
