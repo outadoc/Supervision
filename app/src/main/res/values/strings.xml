@@ -2,5 +2,6 @@
     <string name="app_name">Supervision</string>
 
     <string name="action_settings">Préférences</string>
+    <string name="liste_temperature">Liste des températures</string>
 
 </resources>
