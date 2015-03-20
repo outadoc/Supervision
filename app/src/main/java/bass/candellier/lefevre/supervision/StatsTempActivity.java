@@ -2,8 +2,10 @@ package bass.candellier.lefevre.supervision;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -60,6 +62,20 @@ public class StatsTempActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String ip = prefs.getString( PreferencesFragment.PREFKEY_HOSTNAME, "82.233.223.249");
+                String port = prefs.getString( PreferencesFragment.PREFKEY_PORT, "1433");
+                String username = prefs.getString( PreferencesFragment.PREFKEY_USERNAME, "supervision");
+                String password = prefs.getString( PreferencesFragment.PREFKEY_PASSWORD, "Password1234");
+                try {
+                    clientBdd=new ClientSQLmetier(ip,port,"Temperatures",username,password,5);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
                 ResultSet tab=clientBdd.getTableTemperatures(n);
                 while(tab.next())
                 {
