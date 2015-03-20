@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.androidplot.xy.XYPlot;
 
-public class PlotMDActivity extends Activity {
+public class PlotMPActivity extends Activity {
 
-    private static final String LISTE_MD_KEY = "";
+    private static final String LISTE_MP_KEY = "";
     private XYPlot plot;
 
-    public PlotMDActivity() {
+    public PlotMPActivity() {
 
     }
 

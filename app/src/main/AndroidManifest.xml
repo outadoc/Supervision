@@ -18,10 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SetPreferencesFragmentActivity"
             android:label="@string/title_activity_set_preferences_fragment" >
         </activity>
+
         <activity
             android:name=".StatsDDActivity"
             android:label="@string/title_activity_usageDD" >
@@ -32,6 +34,19 @@
         </activity>
         <activity
             android:name=".StatsTempActivity"
+            android:label="@string/title_activity_temperatures" >
+        </activity>
+
+        <activity
+            android:name=".PlotDDActivity"
+            android:label="@string/title_activity_usageDD" >
+        </activity>
+        <activity
+            android:name=".PlotMPActivity"
+            android:label="@string/title_activity_usageMP" >
+        </activity>
+        <activity
+            android:name=".PlotTempActivity"
             android:label="@string/title_activity_temperatures" >
         </activity>
     </application>
