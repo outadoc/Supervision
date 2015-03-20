@@ -6,7 +6,6 @@ import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ProgressBar;
@@ -52,16 +51,6 @@ public class MainActivity extends ActionBarActivity {
 		progressBar = (ProgressBar) findViewById(R.id.progress_status);
 		lblProgressStatus = (TextView) findViewById(R.id.lbl_progress_status);
 
-		buttonListeTemp = (Button) findViewById(R.id.btn_liste_temperature);
-		buttonListeTemp.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Class c = StatsTempActivity.class;
-				Intent i = new Intent(MainActivity.this, c);
-				startActivityForResult(i, 1);
-			}
-		});
-
 		cpuUsageList = new String[SnmpGetTask.NB_CPU_CORES];
 		cpuAdapter = new CPUUsageAdapter(this, cpuUsageList);
 		gridCpuUsage.setAdapter(cpuAdapter);
@@ -97,10 +86,12 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-			case R.id.action_settings: {
+			case R.id.action_settings:
 				startActivity(new Intent(this, SetPreferencesFragmentActivity.class));
 				return true;
-			}
+			case R.id.action_liste_temperature:
+				startActivity(new Intent(this, StatsTempActivity.class));
+				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
