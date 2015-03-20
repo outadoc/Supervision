@@ -2,7 +2,10 @@
     <string name="app_name">Supervision</string>
 
     <string name="action_settings">Préférences</string>
+    <string name="action_settings_courbe">Courbe</string>
+
     <string name="liste_temperature">Liste des températures</string>
+
 	<string name="refresh_text_refreshing">Rafraîchissement en cours…</string>
 	<string name="refresh_text_countdown">Rafraîchissement dans %1$s…</string>
 
