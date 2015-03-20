@@ -28,6 +28,8 @@ public class StatsTempActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new Recuperation().execute();
+
     }
 
     @Override
@@ -70,7 +72,7 @@ public class StatsTempActivity extends Activity {
             }
 
             return null;
-        };
+        }
 
         @Override
         protected void onPostExecute(Void aVoid){
