@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,11 +25,9 @@ public class MainActivity extends ActionBarActivity {
 
 	private TextView lblTemperatureBaie;
 	private TextView lblUtilisationDisque;
-	private GridView gridCpuUsage;
 
 	private ProgressBar progressBar;
 	private TextView lblProgressStatus;
-	private Button buttonListeTemp;
 
 	private CPUUsageAdapter cpuAdapter;
 	private String[] cpuUsageList;
@@ -50,13 +47,14 @@ public class MainActivity extends ActionBarActivity {
 
 		lblTemperatureBaie = (TextView) findViewById(R.id.lbl_temp_baie);
 		lblUtilisationDisque = (TextView) findViewById(R.id.lbl_util_disques);
-		gridCpuUsage = (GridView) findViewById(R.id.container_cpu_usage);
 
 		progressBar = (ProgressBar) findViewById(R.id.progress_status);
 		lblProgressStatus = (TextView) findViewById(R.id.lbl_progress_status);
 
 		cpuUsageList = new String[SnmpGetTask.NB_CPU_CORES];
 		cpuAdapter = new CPUUsageAdapter(this, cpuUsageList);
+
+		GridView gridCpuUsage = (GridView) findViewById(R.id.container_cpu_usage);
 		gridCpuUsage.setAdapter(cpuAdapter);
 	}
 
