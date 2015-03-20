@@ -20,6 +20,9 @@ import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
+	public static final int AUTO_REFRESH_PERIOD_MS = 10000;
+	public static final int PROGRESS_BAR_INTERVAL_MS = 100;
+
 	private TextView lblTemperatureBaie;
 	private TextView lblUtilisationDisque;
 	private GridView gridCpuUsage;
@@ -76,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 				refreshInterface();
 			}
 
-		}, 0, 10000);
+		}, 0, AUTO_REFRESH_PERIOD_MS);
 	}
 
 	@Override
@@ -167,16 +170,16 @@ public class MainActivity extends ActionBarActivity {
 
 	public void onRefreshed() {
 		progressBar.setIndeterminate(false);
-		progressBar.setMax(100);
-		progressBar.setProgress(100);
+		progressBar.setMax(AUTO_REFRESH_PERIOD_MS / PROGRESS_BAR_INTERVAL_MS);
+		progressBar.setProgress(AUTO_REFRESH_PERIOD_MS / PROGRESS_BAR_INTERVAL_MS);
 
-		countDownTimer = new CountDownTimer(10000, 100) {
+		countDownTimer = new CountDownTimer(AUTO_REFRESH_PERIOD_MS, PROGRESS_BAR_INTERVAL_MS) {
 
 			@Override
 			public void onTick(long millisUntilFinished) {
-				progressBar.setProgress((int) (millisUntilFinished / 100));
-				lblProgressStatus.setText(getString(R.string.refresh_text_countdown, (int) Math.ceil(millisUntilFinished /
-						1000)));
+				progressBar.setProgress((int) (millisUntilFinished / PROGRESS_BAR_INTERVAL_MS));
+				lblProgressStatus.setText(getString(R.string.refresh_text_countdown,
+						(int) Math.ceil(millisUntilFinished / 1000)));
 			}
 
 			@Override
