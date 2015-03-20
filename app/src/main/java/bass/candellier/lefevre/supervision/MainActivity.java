@@ -20,7 +20,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
-	public static final int AUTO_REFRESH_PERIOD_MS = 10000;
+	public static final int AUTO_REFRESH_PERIOD_MS = 15000;
 	public static final int PROGRESS_BAR_INTERVAL_MS = 100;
 
 	private TextView lblTemperatureBaie;
@@ -59,6 +59,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	@Override
+	protected void onPause() {
+		super.onPause();
+		refreshTimer.cancel();
+	}
+
+	@Override
 	protected void onResume() {
 		super.onResume();
 
@@ -71,12 +77,6 @@ public class MainActivity extends ActionBarActivity {
 			}
 
 		}, 0, AUTO_REFRESH_PERIOD_MS);
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		refreshTimer.cancel();
 	}
 
 	@Override
