@@ -7,11 +7,33 @@
 	android:orientation="vertical"
 	android:padding="20dp">
 
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginBottom="15dp">
+
+		<TextView
+			android:id="@+id/lbl_progress_status"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_gravity="center_horizontal" />
+
+		<ProgressBar
+			android:id="@+id/progress_status"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+			android:indeterminate="true" />
+
+	</LinearLayout>
+
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:text="42°C"
 		android:textSize="55sp"
 		android:gravity="center_horizontal"
 		android:id="@+id/lbl_temp_baie" />
@@ -34,7 +56,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:text="53%"
 		android:textSize="55sp"
 		android:gravity="center_horizontal"
 		android:id="@+id/lbl_util_disques" />
@@ -65,37 +86,6 @@
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:text="Activité des processeurs"
 		android:layout_gravity="center_horizontal" />
-
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:layout_marginTop="50dp">
-
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="1dp"
-			android:background="@android:color/darker_gray"
-			android:layout_marginTop="15dp"
-			android:layout_marginBottom="10dp" />
-
-		<TextView
-			android:id="@+id/lbl_progress_status"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:text="Rafraîchissement dans x..."
-			android:layout_gravity="center_horizontal" />
-
-		<ProgressBar
-			android:id="@+id/progress_status"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-			android:indeterminate="true" />
-
-	</LinearLayout>
 
     <Button
         android:layout_width="match_parent"
