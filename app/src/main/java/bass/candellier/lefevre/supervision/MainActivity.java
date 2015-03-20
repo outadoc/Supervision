@@ -129,7 +129,7 @@ public class MainActivity extends ActionBarActivity {
 				}
 
 				progressBar.setIndeterminate(true);
-				lblProgressStatus.setText("Rafraîchissement en cours...");
+				lblProgressStatus.setText(R.string.refresh_text_refreshing);
 
 				hwTask.execute(new String[]{
 						SnmpGetTask.OID_HDD_USAGE,
@@ -156,7 +156,7 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				progressBar.setProgress((int) (millisUntilFinished / 100));
-				lblProgressStatus.setText("Rafraîchissement dans " + (int) Math.ceil(millisUntilFinished / 1000) + "...");
+				lblProgressStatus.setText(getString (R.string.refresh_text_countdown, (int) Math.ceil(millisUntilFinished / 1000)));
 			}
 
 			@Override
