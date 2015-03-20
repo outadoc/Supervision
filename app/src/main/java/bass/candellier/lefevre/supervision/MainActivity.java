@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +104,8 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onResult(String[] vars) {
 				if(vars == null) {
-					throw new RuntimeException("SNMP a retourné null");
+					Toast.makeText(MainActivity.this, "Échec de la récupération des variables SNMP.", Toast.LENGTH_LONG).show();
+					return;
 				}
 
 				lblUtilisationDisque.setText(String.valueOf(Integer.parseInt(vars[1]) / Integer.parseInt(vars[0])) + "%");
@@ -117,7 +119,9 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onResult(String[] vars) {
 				if(vars == null) {
-					throw new RuntimeException("SNMP a retourné null pour sonde");
+					Toast.makeText(MainActivity.this, "Échec de la récupération des variables SNMP de la sonde.",
+							Toast.LENGTH_LONG).show();
+					return;
 				}
 
 				lblTemperatureBaie.setText(vars[0] + "°C");
