@@ -6,16 +6,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class StatsDDActivity extends Activity {
+public class StatsTempActivity extends Activity {
 
-    private static final String LISTE_DD_KEY = "";
-    private static final String ARRAY_DD_KEY = "";
-    private Button btnPlotMP;
+    private static final String LISTE_TEMP_KEY = "";
+    private static final String ARRAY_TEMP_KEY = "";
+    private Button btnPlotTemp;
     private ListView listeView;
     private ProgressDialog dialogP;
-    private ClientSQLmetier clientBDD;
 
-    public StatsDDActivity() {
+    public StatsTempActivity() {
     }
 
     @Override
@@ -36,11 +35,11 @@ public class StatsDDActivity extends Activity {
 
     }
 
-    public void startThreadLectureUsageDD(ClientSQLmetier base) {
+    public void startThreadLectureTemp(ClientSQLmetier base) {
 
     }
 
-    public void addNewLigneUsageDD(UsageDD temp) {
+    public void addNewLigneTemp(Temp temp) {
 
     }
 }
