@@ -13,6 +13,7 @@ public class StatsDDActivity extends Activity {
     private Button btnPlotMP;
     private ListView listeView;
     private ProgressDialog dialogP;
+    private ClientSQLmetier clientBDD;
 
     public StatsDDActivity() {
     }
