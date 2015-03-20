@@ -62,7 +62,7 @@
 					android:layout_height="wrap_content"
 					android:textStyle="italic"
 					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:text="Température de la baie"
+					android:text="@string/main_temperature_baie"
 					android:layout_gravity="center_horizontal" />
 			</LinearLayout>
 
@@ -96,7 +96,7 @@
 					android:layout_height="wrap_content"
 					android:textStyle="italic"
 					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:text="Utilisation du disque"
+					android:text="@string/main_utilisation_disque"
 					android:layout_gravity="center_horizontal" />
 
 			</LinearLayout>
@@ -127,7 +127,7 @@
 					android:layout_height="wrap_content"
 					android:textStyle="italic"
 					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:text="Activité des processeurs"
+					android:text="@string/main_activite_processeurs"
 					android:layout_gravity="center_horizontal"/>
 			</LinearLayout>
 		</android.support.v7.widget.CardView>

@@ -3,6 +3,7 @@ package bass.candellier.lefevre.supervision;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +40,8 @@ public class MainActivity extends ActionBarActivity {
 
 	private Timer refreshTimer;
 	private CountDownTimer countDownTimer;
+
+	private boolean hasBeenNotifiedOfRefresh = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,35 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putString("bundle_temp", lblTemperatureBaie.getText().toString());
+		outState.putString("bundle_disk", lblUtilisationDisque.getText().toString());
+		outState.putStringArray("bundle_cpu_usage", cpuUsageList);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+
+		if(lblTemperatureBaie != null) {
+			lblTemperatureBaie.setText(savedInstanceState.getString("bundle_temp"));
+		}
+
+		if(lblUtilisationDisque != null) {
+			lblUtilisationDisque.setText(savedInstanceState.getString("bundle_disk"));
+		}
+
+		String[] usages = savedInstanceState.getStringArray("bundle_cpu_usage");
+		System.arraycopy(usages, 0, cpuUsageList, 0, SnmpGetTask.NB_CPU_CORES);
+
+		if(cpuAdapter != null) {
+			cpuAdapter.notifyDataSetChanged();
+		}
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
@@ -99,12 +131,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void refreshInterface() {
-
 		hwTask = new SnmpGetTask(this, new SnmpTaskListener() {
 			@Override
 			public void onResult(String[] vars) {
 				if(vars == null) {
-					Toast.makeText(MainActivity.this, "Échec de la récupération des variables SNMP.", Toast.LENGTH_LONG).show();
+					Toast.makeText(MainActivity.this, getString(R.string.error_snmp_normal), Toast.LENGTH_LONG).show();
+					onRefreshed();
 					return;
 				}
 
@@ -112,6 +144,7 @@ public class MainActivity extends ActionBarActivity {
 
 				System.arraycopy(vars, 2, cpuUsageList, 0, SnmpGetTask.NB_CPU_CORES);
 				cpuAdapter.notifyDataSetChanged();
+				onRefreshed();
 			}
 		});
 
@@ -119,8 +152,9 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onResult(String[] vars) {
 				if(vars == null) {
-					Toast.makeText(MainActivity.this, "Échec de la récupération des variables SNMP de la sonde.",
+					Toast.makeText(MainActivity.this, getString(R.string.error_snmp_sonde),
 							Toast.LENGTH_LONG).show();
+					onRefreshed();
 					return;
 				}
 
@@ -132,13 +166,17 @@ public class MainActivity extends ActionBarActivity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
+				// On annule le compte à rebours de rafraîchissement
 				if(countDownTimer != null) {
 					countDownTimer.cancel();
 				}
 
+				hasBeenNotifiedOfRefresh = false;
+
 				progressBar.setIndeterminate(true);
 				lblProgressStatus.setText(R.string.refresh_text_refreshing);
 
+				// On récupère les OID pour les coeurs du (des) CPU en les copiant vers une liste
 				List<String> hwOidList = new ArrayList<String>();
 
 				hwOidList.add(SnmpGetTask.OID_HDD_USAGE);
@@ -164,6 +202,11 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void onRefreshed() {
+		// Si on a déjà remis le compteur à zéro, pas besoin de le refaire
+		if(hasBeenNotifiedOfRefresh) {
+			return;
+		}
+
 		progressBar.setIndeterminate(false);
 		progressBar.setMax(AUTO_REFRESH_PERIOD_MS / PROGRESS_BAR_INTERVAL_MS);
 		progressBar.setProgress(AUTO_REFRESH_PERIOD_MS / PROGRESS_BAR_INTERVAL_MS);
@@ -182,6 +225,8 @@ public class MainActivity extends ActionBarActivity {
 			}
 
 		}.start();
+
+		hasBeenNotifiedOfRefresh = true;
 	}
 
 }
