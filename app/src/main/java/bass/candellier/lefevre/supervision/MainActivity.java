@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,11 +22,14 @@ public class MainActivity extends ActionBarActivity {
 
 	private TextView lblTemperatureBaie;
 	private TextView lblUtilisationDisque;
-	private GridLayout gridCpuUsage;
+	private GridView gridCpuUsage;
 
 	private ProgressBar progressBar;
 	private TextView lblProgressStatus;
 	private Button buttonListeTemp;
+
+	private CPUUsageAdapter cpuAdapter;
+	private String[] cpuUsageList;
 
 	private SnmpGetTask hwTask;
 	private SnmpGetTaskSonde sondeTask;
@@ -39,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
 
 		lblTemperatureBaie = (TextView) findViewById(R.id.lbl_temp_baie);
 		lblUtilisationDisque = (TextView) findViewById(R.id.lbl_util_disques);
-		gridCpuUsage = (GridLayout) findViewById(R.id.container_cpu_usage);
+		gridCpuUsage = (GridView) findViewById(R.id.container_cpu_usage);
 
 		progressBar = (ProgressBar) findViewById(R.id.progress_status);
 		lblProgressStatus = (TextView) findViewById(R.id.lbl_progress_status);
@@ -53,6 +58,10 @@ public class MainActivity extends ActionBarActivity {
 				startActivityForResult(i, 1);
 			}
 		});
+
+		cpuUsageList = new String[SnmpGetTask.NB_CPU_CORES];
+		cpuAdapter = new CPUUsageAdapter(this, cpuUsageList);
+		gridCpuUsage.setAdapter(cpuAdapter);
 	}
 
 	@Override
@@ -103,9 +112,10 @@ public class MainActivity extends ActionBarActivity {
 					throw new RuntimeException("SNMP a retourné null");
 				}
 
-				int freeDisk = Integer.parseInt(vars[1]) / Integer.parseInt(vars[0]);
+				lblUtilisationDisque.setText(String.valueOf(Integer.parseInt(vars[1]) / Integer.parseInt(vars[0])) + "%");
 
-				lblUtilisationDisque.setText(String.valueOf(freeDisk) + "%");
+				System.arraycopy(vars, 2, cpuUsageList, 0, SnmpGetTask.NB_CPU_CORES);
+				cpuAdapter.notifyDataSetChanged();
 			}
 		});
 
@@ -131,10 +141,19 @@ public class MainActivity extends ActionBarActivity {
 				progressBar.setIndeterminate(true);
 				lblProgressStatus.setText(R.string.refresh_text_refreshing);
 
-				hwTask.execute(new String[]{
-						SnmpGetTask.OID_HDD_USAGE,
-						SnmpGetTask.OID_HDD_CAPACITY
-				});
+				List<String> hwOidList = new ArrayList<String>();
+
+				hwOidList.add(SnmpGetTask.OID_HDD_USAGE);
+				hwOidList.add(SnmpGetTask.OID_HDD_CAPACITY);
+
+				for(int i = 2; i < SnmpGetTask.NB_CPU_CORES + 2; i++) {
+					hwOidList.add(SnmpGetTask.OID_BASE_CPU_USAGE + i);
+				}
+
+				String[] hwOidArray = new String[hwOidList.size()];
+				hwOidList.toArray(hwOidArray);
+
+				hwTask.execute(hwOidArray);
 
 				sondeTask.execute(new String[]{
 						SnmpGetTaskSonde.OID_SONDE_TEMP
@@ -156,7 +175,8 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				progressBar.setProgress((int) (millisUntilFinished / 100));
-				lblProgressStatus.setText(getString (R.string.refresh_text_countdown, (int) Math.ceil(millisUntilFinished / 1000)));
+				lblProgressStatus.setText(getString(R.string.refresh_text_countdown, (int) Math.ceil(millisUntilFinished /
+						1000)));
 			}
 
 			@Override

@@ -12,6 +12,8 @@ public class SnmpGetTask extends SnmpTask {
 	public static final String OID_HDD_USAGE = ".1.3.6.1.2.1.25.2.3.1.6.1";
 	public static final String OID_BASE_CPU_USAGE = ".1.3.6.1.2.1.25.3.3.1.2.";
 
+	public static final int NB_CPU_CORES = 8;
+
 	public SnmpGetTask(Context context, SnmpTaskListener listener) {
 		super(context, listener);
 	}
