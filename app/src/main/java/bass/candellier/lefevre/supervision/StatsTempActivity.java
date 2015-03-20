@@ -31,7 +31,7 @@ public class StatsTempActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new Recuperation().execute();
-
+        listeView = (ListView) findViewById(R.id.liste_stats_temp);
     }
 
     @Override
@@ -55,51 +55,38 @@ public class StatsTempActivity extends Activity {
 
     }
 
-    public class Recuperation extends AsyncTask<Void,Void,Void> {
+    public class Recuperation extends AsyncTask<Void, Void, Void> {
         ArrayAdapter<Temp> liste;
-        ArrayList<Temp> listView=new ArrayList<Temp>();
+        ArrayList<Temp> resRequete = new ArrayList<>();
 
         @Override
         protected Void doInBackground(Void... params) {
             try {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String ip = prefs.getString( PreferencesFragment.PREFKEY_HOSTNAME, "82.233.223.249");
-                String port = prefs.getString( PreferencesFragment.PREFKEY_PORT, "1433");
-                String username = prefs.getString( PreferencesFragment.PREFKEY_USERNAME, "supervision");
-                String password = prefs.getString( PreferencesFragment.PREFKEY_PASSWORD, "Password1234");
+                String ip = prefs.getString(PreferencesFragment.PREFKEY_HOSTNAME, "82.233.223.249");
+                String port = prefs.getString(PreferencesFragment.PREFKEY_PORT, "1433");
+                String username = prefs.getString(PreferencesFragment.PREFKEY_USERNAME, "supervision");
+                String password = prefs.getString(PreferencesFragment.PREFKEY_PASSWORD, "Password1234");
                 try {
-                    clientBdd=new ClientSQLmetier(ip,port,"Temperatures",username,password,5);
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
+                    clientBdd = new ClientSQLmetier(ip, port, "Temperatures", username, password, 5);
+                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                ResultSet tab=clientBdd.getTableTemperatures(n);
-                while(tab.next())
-                {
-                    listView.add(new Temp(tab.getString("sdate"),tab.getString("temp"),tab.getString("nomBaie")));
-
-
+                ResultSet tab = clientBdd.getTableTemperatures(n);
+                while (tab.next()) {
+                    resRequete.add(new Temp(tab.getString("sdate"), tab.getString("temp"), tab.getString("nomBaie")));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
             return null;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid){
-            liste=new ArrayAdapter(StatsTempActivity.this,android.R.layout.simple_list_item_1,listView);
-
-            ListView listef= (ListView) findViewById(R.id.liste_stats_temp);
-            listef.setAdapter(liste);
+        protected void onPostExecute(Void aVoid) {
+            liste = new ArrayAdapter(StatsTempActivity.this, android.R.layout.simple_list_item_1, resRequete);
+            listeView.setAdapter(liste);
             liste.notifyDataSetChanged();
-
         }
     }
-
-
 }
