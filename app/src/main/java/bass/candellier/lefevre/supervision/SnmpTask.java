@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 
+import com.adventnet.snmp.beans.SnmpServer;
 import com.adventnet.snmp.beans.SnmpTarget;
 
 /**
@@ -25,6 +26,7 @@ public abstract class SnmpTask extends AsyncTask<String[], Void, Void> {
 
 		this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		this.snmpTarget = new SnmpTarget();
+		snmpTarget.setSnmpVersion(SnmpServer.VERSION1);
 	}
 
 	@Override
