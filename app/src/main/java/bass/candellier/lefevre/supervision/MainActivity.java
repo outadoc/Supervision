@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -56,6 +58,17 @@ public class MainActivity extends ActionBarActivity {
 
 		GridView gridCpuUsage = (GridView) findViewById(R.id.container_cpu_usage);
 		gridCpuUsage.setAdapter(cpuAdapter);
+
+		CardView cardTemp = (CardView) findViewById(R.id.card_temp);
+		CardView cardDisque = (CardView) findViewById(R.id.card_disque);
+		CardView cardCPU = (CardView) findViewById(R.id.card_cpu);
+
+		cardTemp.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, StatsTempActivity.class));
+			}
+		});
 	}
 
 	@Override
@@ -119,9 +132,6 @@ public class MainActivity extends ActionBarActivity {
 		switch(item.getItemId()) {
 			case R.id.action_settings:
 				startActivity(new Intent(this, SetPreferencesFragmentActivity.class));
-				return true;
-			case R.id.action_liste_temperature:
-				startActivity(new Intent(this, StatsTempActivity.class));
 				return true;
 		}
 
