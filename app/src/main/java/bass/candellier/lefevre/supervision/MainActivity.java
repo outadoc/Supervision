@@ -69,6 +69,18 @@ public class MainActivity extends ActionBarActivity {
 				startActivity(new Intent(MainActivity.this, StatsTempActivity.class));
 			}
 		});
+		cardDisque.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, StatsDDActivity.class));
+			}
+		});
+		cardCPU.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, StatsMPActivity.class));
+			}
+		});
 	}
 
 	@Override
