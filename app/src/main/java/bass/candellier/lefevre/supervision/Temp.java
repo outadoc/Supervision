@@ -1,14 +1,22 @@
 package bass.candellier.lefevre.supervision;
 
-/**
- * Created by Yannick on 10/03/2015.
- */
-public class Temp {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Temp implements Parcelable {
 
     private String sdate;
     private String temp;
     private String nomBaie;
+    public static final Parcelable.Creator<Temp> CREATOR = new Parcelable.Creator<Temp>() {
+        public Temp createFromParcel(Parcel in) {
+            return new Temp(in);
+        }
 
+        public Temp[] newArray(int size) {
+            return new Temp[size];
+        }
+    };
 
     public Temp(String sdate, String temp, String nomBaie) {
         this.sdate = sdate;
@@ -16,12 +24,9 @@ public class Temp {
         this.nomBaie = nomBaie;
     }
 
-    public int describeContents(){
-
-
-        return 0;
+    public Temp(Parcel in) {
+        readFromParcel(in);
     }
-
 
     @Override
     public String toString() {
@@ -30,6 +35,23 @@ public class Temp {
                 ", temp='" + temp + '\'' +
                 ", nomBaie='" + nomBaie + '\'' +
                 '}';
+    }
+
+    private void readFromParcel(Parcel in) {
+        this.sdate = in.readString();
+        this.temp = in.readString();
+        this.nomBaie = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.sdate);
+        dest.writeString(this.temp);
+        dest.writeString(this.nomBaie);
+    }
+
+    public int describeContents() {
+        return 0;
     }
 
     public String getSdate() {

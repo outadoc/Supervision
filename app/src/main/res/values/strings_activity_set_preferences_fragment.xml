@@ -4,10 +4,6 @@
 
     <string name="title_activity_usageDD">UsageDD</string>
     <string name="title_activity_usageMP">UsageMP</string>
-    <string name="title_activity_temperatures">Temperatures</string>
-
-    <string name="title_courbe_dd">DD de la baie</string>
-    <string name="title_courbe_mp">MP de la baie</string>
-    <string name="title_courbe_temp">Température de la baie</string>
+    <string name="title_activity_temperatures">Températures de la baie</string>
 
 </resources>
