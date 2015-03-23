@@ -1,9 +1,5 @@
 package bass.candellier.lefevre.supervision;
 
-/**
- * Created by Yannick on 20/03/2015.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

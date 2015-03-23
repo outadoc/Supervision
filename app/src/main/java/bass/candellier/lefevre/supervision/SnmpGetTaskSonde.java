@@ -2,9 +2,6 @@ package bass.candellier.lefevre.supervision;
 
 import android.content.Context;
 
-/**
- * Created by outadoc on 20/03/15.
- */
 public class SnmpGetTaskSonde extends SnmpTask {
 
 	public static final String OID_SONDE_TEMP = ".1.3.6.1.4.1.21796.4.1.3.1.4.1";

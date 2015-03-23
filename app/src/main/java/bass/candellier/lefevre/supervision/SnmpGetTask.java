@@ -2,9 +2,6 @@ package bass.candellier.lefevre.supervision;
 
 import android.content.Context;
 
-/**
- * Created by outadoc on 20/03/15.
- */
 public class SnmpGetTask extends SnmpTask {
 
 	public static final String OID_HDD_UA = ".1.3.6.1.2.1.25.2.3.1.4.1";

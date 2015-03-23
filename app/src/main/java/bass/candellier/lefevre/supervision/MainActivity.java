@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class MainActivity extends ActionBarActivity {
 
 	public static final int AUTO_REFRESH_PERIOD_MS = 15000;

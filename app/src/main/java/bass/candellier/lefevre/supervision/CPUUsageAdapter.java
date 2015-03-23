@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-/**
- * Created by outadoc on 20/03/15.
- */
 public class CPUUsageAdapter extends ArrayAdapter<String> {
 
 	public CPUUsageAdapter(Context context, String[] objects) {
