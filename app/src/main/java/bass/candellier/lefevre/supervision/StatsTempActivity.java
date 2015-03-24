@@ -114,7 +114,7 @@ public class StatsTempActivity extends ActionBarActivity {
                 progressDialog.dismiss();
             }
 
-            liste = new ArrayUsageTempAdapter(StatsTempActivity.this, android.R.layout.simple_list_item_1, resRequete);
+            liste = new ArrayUsageTempAdapter(StatsTempActivity.this,R.layout.temp_list, resRequete);
             listeView.setAdapter(liste);
             liste.notifyDataSetChanged();
         }
