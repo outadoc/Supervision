@@ -1,6 +1,5 @@
 package bass.candellier.lefevre.supervision;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,13 +19,14 @@ import java.util.ArrayList;
 
 public class StatsTempActivity extends ActionBarActivity {
 
-    public static final int n=10;
+    public static final int n = 10;
     private static final String LISTE_TEMP_KEY = "";
     private static final String ARRAY_TEMP_KEY = "";
     private Button btnPlotTemp;
     private ListView listeView;
-    private ProgressDialog dialogP;
+    private ProgressDialog progressDialog;
     private ClientSQLmetier clientBdd;
+    private ArrayList<Temp> resRequete = new ArrayList<>();
 
     public StatsTempActivity() {
     }
@@ -34,9 +34,11 @@ public class StatsTempActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Recuperation().execute();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         setContentView(R.layout.activity_stats_temp);
         listeView = (ListView) findViewById(R.id.liste_stats_temp);
+        new Recuperation().execute();
     }
 
     @Override
@@ -52,9 +54,9 @@ public class StatsTempActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.action_settings: {
-                startActivity(new Intent(this, PlotTempActivity.class));
+                startActivity(new Intent(this, PlotTempActivity.class).putParcelableArrayListExtra("temp", resRequete));
                 return true;
             }
         }
@@ -73,7 +75,12 @@ public class StatsTempActivity extends ActionBarActivity {
 
     public class Recuperation extends AsyncTask<Void, Void, Void> {
         ArrayAdapter<Temp> liste;
-        ArrayList<Temp> resRequete = new ArrayList<>();
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setMessage("Récupération des températures en cours");
+            progressDialog.show();
+        }
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -103,6 +110,10 @@ public class StatsTempActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
             liste = new ArrayUsageTempAdapter(StatsTempActivity.this, android.R.layout.simple_list_item_1, resRequete);
             listeView.setAdapter(liste);
             liste.notifyDataSetChanged();

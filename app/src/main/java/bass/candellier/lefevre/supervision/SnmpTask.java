@@ -8,9 +8,6 @@ import android.preference.PreferenceManager;
 import com.adventnet.snmp.beans.SnmpServer;
 import com.adventnet.snmp.beans.SnmpTarget;
 
-/**
- * Created by outadoc on 20/03/15.
- */
 public abstract class SnmpTask extends AsyncTask<String[], Void, Void> {
 
 	protected Context context;

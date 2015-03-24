@@ -1,8 +1,5 @@
 package bass.candellier.lefevre.supervision;
 
-/**
- * Created by Yannick on 10/03/2015.
- */
 public class UsageDD {
     private String sdate;
     private String Usage;

@@ -2,12 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <ListView
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/plot_dd"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/liste_stats_temp" />
+        android:layout_height="fill_parent" />
 
 </LinearLayout>
