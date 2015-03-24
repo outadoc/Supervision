@@ -48,7 +48,7 @@ public class StatsMPActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        ;
+        getMenuInflater().inflate(R.menu.menu_stats_mp, menu);
         return true;
     }
 
@@ -56,7 +56,7 @@ public class StatsMPActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings: {
-
+                startActivity(new Intent(this, PlotMPActivity.class).putParcelableArrayListExtra("mp", resRequete));
                 return true;
             }
         }
@@ -78,7 +78,8 @@ public class StatsMPActivity extends ActionBarActivity {
 
         @Override
         protected void onPreExecute() {
-
+            progressDialog.setMessage("Récupération des usages des processeurs en cours");
+            progressDialog.show();
         }
 
         @Override
@@ -109,7 +110,9 @@ public class StatsMPActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
 
             liste = new ArrayAdapter(StatsMPActivity.this, android.R.layout.simple_list_item_1, resRequete);
             listeView.setAdapter(liste);
