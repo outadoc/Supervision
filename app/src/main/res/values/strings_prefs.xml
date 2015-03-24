@@ -17,4 +17,7 @@
 	<string name="default_pref_snmp_temp_port" translatable="false">1610</string>
 	<string name="default_pref_snmp_temp_password" translatable="false">DataCenterVDR</string>
 
+    <!-- Divers -->
+    <string name="default_number_values" translatable="false">10</string>
+
 </resources>

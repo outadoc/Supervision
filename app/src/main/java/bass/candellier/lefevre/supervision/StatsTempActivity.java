@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class StatsTempActivity extends ActionBarActivity {
 
-    public static final int n = 10;
     private static final String LISTE_TEMP_KEY = PlotTempActivity.getListeTempKey();
     private static final String ARRAY_TEMP_KEY = "";
+    private int n = 10;
     private ListView listeView;
     private ProgressDialog progressDialog;
     private ClientSQLmetier clientBdd;
@@ -35,6 +35,10 @@ public class StatsTempActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        n = Integer.valueOf(prefs.getString("PREFKEY_NB_VALUES", "10"));
+
         setContentView(R.layout.activity_stats_temp);
         listeView = (ListView) findViewById(R.id.liste_stats_temp);
         new Recuperation().execute();
