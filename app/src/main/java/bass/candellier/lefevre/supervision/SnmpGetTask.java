@@ -18,7 +18,7 @@ public class SnmpGetTask extends SnmpTask {
 	@Override
 	protected void onPreExecute() {
 		snmpTarget.setTargetHost(prefs.getString("pref_snmp_hostname", "82.233.223.249"));
-		snmpTarget.setTargetPort(prefs.getInt("pref_snmp_port", 161));
+		snmpTarget.setTargetPort(Integer.valueOf(prefs.getString("pref_snmp_port", "161")));
 		snmpTarget.setCommunity(prefs.getString("pref_snmp_password", "DataCenterVDR"));
 	}
 
