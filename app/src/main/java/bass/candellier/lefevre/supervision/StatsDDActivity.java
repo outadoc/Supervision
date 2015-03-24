@@ -48,7 +48,7 @@ public class StatsDDActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       ;
+        getMenuInflater().inflate(R.menu.menu_stats_dd, menu);
         return true;
     }
 
@@ -56,7 +56,7 @@ public class StatsDDActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings: {
-
+                startActivity(new Intent(this, PlotDDActivity.class).putParcelableArrayListExtra("dd", resRequete));
                 return true;
             }
         }
@@ -78,7 +78,8 @@ public class StatsDDActivity extends ActionBarActivity {
 
         @Override
         protected void onPreExecute() {
-
+            progressDialog.setMessage("Récupération des utilisations du disque en cours");
+            progressDialog.show();
         }
 
         @Override
@@ -109,7 +110,9 @@ public class StatsDDActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
 
             liste = new ArrayAdapter(StatsDDActivity.this, android.R.layout.simple_list_item_1, resRequete);
             listeView.setAdapter(liste);
