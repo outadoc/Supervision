@@ -23,7 +23,10 @@ public abstract class SnmpTask extends AsyncTask<String[], Void, Void> {
 
 		this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		this.snmpTarget = new SnmpTarget();
+
 		snmpTarget.setSnmpVersion(SnmpServer.VERSION1);
+		snmpTarget.setTimeoutInMilliSec(10000);
+		snmpTarget.setRetries(2);
 	}
 
 	@Override
@@ -36,6 +39,7 @@ public abstract class SnmpTask extends AsyncTask<String[], Void, Void> {
 	@Override
 	protected void onPostExecute(Void aVoid) {
 		super.onPostExecute(aVoid);
+		snmpTarget.releaseResources();
 		listener.onResult(results);
 	}
 }
