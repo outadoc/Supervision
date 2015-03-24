@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<PreferenceCategory
 		android:title="Paramètres du serveur BDD">
 
 		<EditTextPreference
-            android:key="PREFKEY_HOSTNAME"
 			android:id="@+id/pref_bdd_hostname"
-			android:title="Nom d'hôte"
+			android:defaultValue="@string/default_pref_bdd_hostname"
+			android:key="PREFKEY_HOSTNAME"
 			android:summary="Entrez le nom d'hôte du serveur SQL Express"
-			android:defaultValue="@string/default_pref_bdd_hostname" />
+			android:title="Nom d'hôte" />
 
 		<EditTextPreference
-            android:key="PREFKEY_PORT"
 			android:id="@+id/pref_bdd_port"
-			android:title="Port"
+			android:defaultValue="@string/default_pref_bdd_port"
+			android:key="PREFKEY_PORT"
 			android:summary="Entrez le numéro de port du serveur SQL Express"
-			android:defaultValue="@string/default_pref_bdd_port" />
+			android:title="Port" />
 
 		<EditTextPreference
-            android:key="PREFKEY_USERNAME"
 			android:id="@+id/pref_bdd_username"
-			android:title="Nom d'utilisateur"
+			android:defaultValue="@string/default_pref_bdd_username"
+			android:key="PREFKEY_USERNAME"
 			android:summary="Entrez le nom du compte autorisé"
-			android:defaultValue="@string/default_pref_bdd_username" />
+			android:title="Nom d'utilisateur" />
 
 		<EditTextPreference
-            android:key="PREFKEY_PASSWORD"
 			android:id="@+id/pref_bdd_password"
-			android:title="Mot de passe"
+			android:defaultValue="@string/default_pref_bdd_password"
+			android:key="PREFKEY_PASSWORD"
 			android:summary="Entrez le mot de passe de connexion"
-			android:defaultValue="@string/default_pref_bdd_password" />
+			android:title="Mot de passe" />
 
 	</PreferenceCategory>
 
@@ -39,22 +39,22 @@
 		android:title="Paramètres du serveur SNMP">
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_hostname"
-			android:title="Nom d'hôte"
+			android:defaultValue="@string/default_pref_snmp_hostname"
+			android:key="pref_snmp_hostname"
 			android:summary="Entez le nom d'hôte du serveur SNMP"
-			android:defaultValue="@string/default_pref_snmp_hostname" />
+			android:title="Nom d'hôte" />
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_port"
-			android:title="Port SNMP"
+			android:defaultValue="@string/default_pref_snmp_port"
+			android:key="pref_snmp_port"
 			android:summary="Entrez le numéro de port du serveur SNMP"
-			android:defaultValue="@string/default_pref_snmp_port" />
+			android:title="Port SNMP" />
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_password"
-			android:title="Communauté SNMP en lecture"
+			android:defaultValue="@string/default_pref_snmp_password"
+			android:key="pref_snmp_password"
 			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture"
-			android:defaultValue="@string/default_pref_snmp_password" />
+			android:title="Communauté SNMP en lecture" />
 
 	</PreferenceCategory>
 
@@ -62,22 +62,22 @@
 		android:title="Paramètres de la sonde température SNMP">
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_temp_hostname"
-			android:title="Nom d'hôte"
+			android:defaultValue="@string/default_pref_snmp_temp_hostname"
+			android:key="pref_snmp_temp_hostname"
 			android:summary="Entez le nom d'hôte de la sonde SNMP"
-			android:defaultValue="@string/default_pref_snmp_temp_hostname" />
+			android:title="Nom d'hôte" />
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_temp_port"
-			android:title="Port SNMP"
+			android:defaultValue="@string/default_pref_snmp_temp_port"
+			android:key="pref_snmp_temp_port"
 			android:summary="Entrez le numéro de port de la sonde SNMP"
-			android:defaultValue="@string/default_pref_snmp_temp_port" />
+			android:title="Port SNMP" />
 
 		<EditTextPreference
-			android:id="@+id/pref_snmp_temp_password"
-			android:title="Communauté SNMP en lecture"
+			android:defaultValue="@string/default_pref_snmp_temp_password"
+			android:key="pref_snmp_temp_password"
 			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde"
-			android:defaultValue="@string/default_pref_snmp_temp_password" />
+			android:title="Communauté SNMP en lecture" />
 
 	</PreferenceCategory>
 
