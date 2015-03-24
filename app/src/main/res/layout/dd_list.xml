@@ -23,17 +23,8 @@
             <TextView android:id="@+id/usage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/sdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:layout_marginLeft="30dp"
-                android:textColor="#000000" />
-
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/libre"
                 android:layout_width="wrap_content"
@@ -41,6 +32,16 @@
                 android:textSize="24sp"
                 android:layout_marginLeft="30dp"
                 android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/sdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginLeft="30dp"
+                android:textColor="#000000" />
+
+
 
         </LinearLayout>
 

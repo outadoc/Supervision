@@ -114,7 +114,7 @@ public class StatsDDActivity extends ActionBarActivity {
                 progressDialog.dismiss();
             }
 
-            liste = new ArrayAdapter(StatsDDActivity.this, android.R.layout.simple_list_item_1, resRequete);
+            liste = new ArrayUsageDDAdapter(StatsDDActivity.this,R.layout.dd_list, resRequete);
             listeView.setAdapter(liste);
             liste.notifyDataSetChanged();
         }
