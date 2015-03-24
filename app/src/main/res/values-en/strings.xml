@@ -10,13 +10,13 @@
     <string name="action_settings_courbe">Curve</string>
 
     <!-- Menu listes & Menu graphiques-->
-    <string name="main_temperature_baie">Température de la baie</string>
-    <string name="main_utilisation_disque">Utilisation du disque</string>
-    <string name="main_activite_processeurs">Activité des processeurs</string>
+    <string name="main_temperature_baie">Bay Temperature</string>
+    <string name="main_utilisation_disque">Disk Usage</string>
+    <string name="main_activite_processeurs">CPU Activity</string>
 
-    <string name="refresh_text_refreshing">Rafraîchissement en cours…</string>
-    <string name="refresh_text_countdown">Rafraîchissement dans %1$s…</string>
-    <string name="error_snmp_normal">Échec de la récupération des variables SNMP.</string>
-    <string name="error_snmp_sonde">Échec de la récupération des variables SNMP de la sonde.</string>
+    <string name="refresh_text_refreshing">Refreshing…</string>
+    <string name="refresh_text_countdown">Refreshing in %1$s…</string>
+    <string name="error_snmp_normal">Could not fetch SNMP variables.</string>
+    <string name="error_snmp_sonde">Could not fetch SNMP variables from the probe.</string>
 
 </resources>

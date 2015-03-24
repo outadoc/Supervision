@@ -33,7 +33,7 @@ public class ArrayUsageTempAdapter extends ArrayAdapter<Temp> { // Déclaration 
             TextView tv_nomBaie = (TextView) v.findViewById(R.id.nomBaie);
 
             ImageView icone = (ImageView) v.findViewById(R.id.imgThermometre);
-            if (tv_temp != null) tv_temp.setText(String.valueOf(tCourant.getTemp()));
+            if (tv_temp != null) tv_temp.setText(String.valueOf(tCourant.getTemp()) + "°C");
             if (tv_sdate != null) tv_sdate.setText(tCourant.getSdate());
             if (tv_nomBaie != null) tv_nomBaie.setText(tCourant.getNomBaie());
 
