@@ -33,7 +33,7 @@ public class ClientSQLmetier {
         Log.i(TAG, "open BDD");
 
         Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date ");
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date DESC");
         return result;
     }
 
@@ -43,7 +43,7 @@ public class ClientSQLmetier {
         }
         Log.i(TAG, "open BDD");
         Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageMP ORDER BY date ");
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageMP ORDER BY date DESC");
         return result;
     }
 
@@ -53,7 +53,7 @@ public class ClientSQLmetier {
         }
         Log.i(TAG, "open BDD");
         Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM Temperatures ORDER BY date ");
+        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM Temperatures ORDER BY date DESC");
         return result;
     }
 
