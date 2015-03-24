@@ -9,45 +9,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
+public class ArrayUsageDDAdapter extends ArrayAdapter<UsageDD> {
 
 
-public class ArrayUsageDDAdapter extends ArrayAdapter<UsageDD> { // Déclaration d'une liste d'items
-    private ArrayList<UsageDD> objets;
-    private int item_id;
+	public ArrayUsageDDAdapter(Context context, int textViewResourceId, ArrayList<UsageDD> objects) {
+		super(context, textViewResourceId, objects);
+	}
 
-    public ArrayUsageDDAdapter(Context context, int textViewResourceId, ArrayList<UsageDD> objects) {
-        super(context, textViewResourceId, objects);
-        this.objets = objects;
-        this.item_id = textViewResourceId;
-    }
+	public View getView(int position, View convertView, ViewGroup parent) {
+		if(convertView == null) {
+			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = inflater.inflate(R.layout.dd_list, null);
+		}
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-        if (v == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.dd_list, null);
-        }
-        UsageDD uCourant = objets.get(position);
-        if (uCourant != null) {
-            TextView tv_DD = (TextView) v.findViewById(R.id.usage);
-            TextView tv_sdate = (TextView) v.findViewById(R.id.sdate);
-            TextView tv_nomBaie = (TextView) v.findViewById(R.id.libre);
+		UsageDD uCourant = getItem(position);
 
-            ImageView icone = (ImageView) v.findViewById(R.id.imgThermometre);
-            if (tv_DD != null) tv_DD.setText(String.valueOf(uCourant.getUsage())+"%");
-            if (tv_sdate != null) tv_sdate.setText(uCourant.getSdate());
-            if (tv_nomBaie != null) tv_nomBaie.setText(String.valueOf(Math.round((uCourant.getCapacite()-uCourant.getUtilisation())/1000000))+"Mo");
+		if(uCourant != null) {
+			TextView tv_DD = (TextView) convertView.findViewById(R.id.usage);
+			TextView tv_sdate = (TextView) convertView.findViewById(R.id.sdate);
+			TextView tv_nomBaie = (TextView) convertView.findViewById(R.id.libre);
 
-            //if (icone != null) icone.setImageResource(R.drawable.thermometre);
-        }
-        return v;
-    }
+			tv_DD.setText(String.valueOf(uCourant.getUsage()) + "%");
+			tv_sdate.setText(uCourant.getSdate());
+			tv_nomBaie.setText(String.valueOf(Math.round((uCourant.getCapacite() - uCourant.getUtilisation()) / 1000000)) + " " +
+					"Mo");
+
+		}
+
+		return convertView;
+	}
+
 }
 
 

@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="title_activity_set_preferences_fragment">Preferences</string>
+	<string name="title_activity_set_preferences_fragment">Preferences</string>
 
-    <string name="title_activity_usageDD">Disk Usage</string>
-    <string name="title_activity_usageMP">CPU Activity</string>
-    <string name="title_activity_temperatures">Bay Temperatures</string>
+	<string name="title_activity_usageDD">Disk Usage</string>
+	<string name="title_activity_usageMP">CPU Activity</string>
+	<string name="title_activity_temperatures">Bay Temperatures</string>
 
 </resources>

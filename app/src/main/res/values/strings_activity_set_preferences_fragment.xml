@@ -2,8 +2,8 @@
 
 	<string name="title_activity_set_preferences_fragment">Préférences</string>
 
-    <string name="title_activity_usageDD">Utilisation du disque</string>
-    <string name="title_activity_usageMP">Activité des processeurs</string>
-    <string name="title_activity_temperatures">Température de la baie</string>
+	<string name="title_activity_usageDD">Utilisation du disque</string>
+	<string name="title_activity_usageMP">Activité des processeurs</string>
+	<string name="title_activity_temperatures">Température de la baie</string>
 
 </resources>

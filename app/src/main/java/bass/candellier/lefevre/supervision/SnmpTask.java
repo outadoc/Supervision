@@ -42,4 +42,5 @@ public abstract class SnmpTask extends AsyncTask<String[], Void, Void> {
 		snmpTarget.releaseResources();
 		listener.onResult(results);
 	}
+
 }

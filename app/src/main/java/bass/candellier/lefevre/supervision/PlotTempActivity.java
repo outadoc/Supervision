@@ -17,86 +17,91 @@ import java.util.Arrays;
 
 public class PlotTempActivity extends ActionBarActivity {
 
-    private static final String LISTE_TEMP_KEY = "temp";
-    private XYPlot plot;
-    private ArrayList<Temp> resRequete = new ArrayList<>();
-    private Number[] temperaturesX;
-    private Number[] temperaturesY;
-    private int i = 0;
+	public static final String LISTE_TEMP_KEY = "temp";
 
-    public PlotTempActivity() {
-    }
+	private XYPlot plot;
+	private ArrayList<Temp> resRequete = new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plot_temp);
+	private Number[] temperaturesX;
+	private Number[] temperaturesY;
 
-        // On récupère toutes les données.
-        resRequete = this.getIntent().getParcelableArrayListExtra(LISTE_TEMP_KEY);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_plot_temp);
 
-        // On isole les températures.
-        temperaturesY = new Number[resRequete.size()];
-        for (i = 0; i < resRequete.size(); i++) {
-            temperaturesY[i] = Float.parseFloat(resRequete.get(i).getTemp());
-        }
+		// On récupère toutes les données.
+		resRequete = this.getIntent().getParcelableArrayListExtra(LISTE_TEMP_KEY);
 
-        // On récupère le minimum et le maximum des températures pour centrer la courbe par la suite.
-        float min = temperaturesY[0].floatValue();
-        float max = temperaturesY[0].floatValue();
-        for (i = 0; i < temperaturesY.length; i++) {
-            if (temperaturesY[i].floatValue() < min) {
-                min = temperaturesY[i].floatValue();
-            }
-            if (temperaturesY[i].floatValue() > max) {
-                max = temperaturesY[i].floatValue();
-            }
-        }
+		// On isole les températures.
+		temperaturesY = new Number[resRequete.size()];
 
-        // On définit également l'espace horizontale entre chaque point pour arriver jusqu'à 100 (l'échelle des temps est relative).
-        temperaturesX = new Number[temperaturesY.length];
-        int step = 100 / temperaturesY.length;
-        for (i = 0; i < temperaturesY.length; i++) {
-            if (i > 0) {
-                temperaturesX[i] = step + temperaturesX[i - 1].floatValue();
-            } else {
-                temperaturesX[i] = step;
-            }
-        }
+		for(int i = 0; i < resRequete.size(); i++) {
+			temperaturesY[i] = Float.parseFloat(resRequete.get(i).getTemp());
+		}
 
-        // Divers modifications visuelles du graphique, après son instanciation.
-        plot = (XYPlot) findViewById(R.id.plot_temp);
-        plot.setTitle("Températures du " + resRequete.get(0).getSdate() + " au " + resRequete.get(resRequete.size() - 1).getSdate());
-        plot.setRangeLabel("°C");
-        plot.setDomainLabel("Temps relatif");
-        plot.getBorderPaint().setColor(Color.BLACK);
-        plot.getBackgroundPaint().setColor(Color.BLACK);
-        plot.setDrawingCacheBackgroundColor(Color.BLACK);
-        plot.getGraphWidget().getBackgroundPaint().setColor(Color.BLACK);
-        plot.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
-        plot.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
-        plot.getGraphWidget().getGridBackgroundPaint().setColor(Color.WHITE);
-        plot.setRangeBoundaries(min - 5, max + 5, BoundaryMode.FIXED);
+		// On récupère le minimum et le maximum des températures pour centrer la courbe par la suite.
+		float min = temperaturesY[0].floatValue();
+		float max = temperaturesY[0].floatValue();
 
-        // On trace la courbe avec ses coordonnées X et Y, et on lui donne un nom.
-        XYSeries courbe_temp = new SimpleXYSeries(Arrays.asList(temperaturesX), Arrays.asList(temperaturesY), "Température de la baie en °C");
+		for(Number aTemperaturesY : temperaturesY) {
+			if(aTemperaturesY.floatValue() < min) {
+				min = aTemperaturesY.floatValue();
+			}
 
-        // On définit la couleur de la courbe, la couleur des points, le transparent sous la courbe, et la couleur des valeurs de chaque point.
-        plot.addSeries(courbe_temp, new LineAndPointFormatter(Color.rgb(255, 0, 0), Color.rgb(0, 0, 0), Color.argb(20, 255, 0, 0), new PointLabelFormatter(Color.BLACK)));
-    }
+			if(aTemperaturesY.floatValue() > max) {
+				max = aTemperaturesY.floatValue();
+			}
+		}
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
+		// On définit également l'espace horizontale entre chaque point pour arriver jusqu'à 100 (l'échelle des temps est
+		// relative).
+		temperaturesX = new Number[temperaturesY.length];
+		int step = 100 / temperaturesY.length;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_plot_temp, menu);
-        return true;
-    }
+		for(int i = 0; i < temperaturesY.length; i++) {
+			if(i > 0) {
+				temperaturesX[i] = step + temperaturesX[i - 1].floatValue();
+			} else {
+				temperaturesX[i] = step;
+			}
+		}
 
-    public static String getListeTempKey() {
-        return LISTE_TEMP_KEY;
-    }
+		// Divers modifications visuelles du graphique, après son instanciation.
+		plot = (XYPlot) findViewById(R.id.plot_temp);
+		plot.setTitle("Températures du " + resRequete.get(0).getSdate() + " au " + resRequete.get(resRequete.size() - 1)
+				.getSdate());
+
+		plot.setRangeLabel("°C");
+		plot.setDomainLabel("Temps relatif");
+		plot.getBorderPaint().setColor(Color.BLACK);
+		plot.getBackgroundPaint().setColor(Color.BLACK);
+		plot.setDrawingCacheBackgroundColor(Color.BLACK);
+		plot.getGraphWidget().getBackgroundPaint().setColor(Color.BLACK);
+		plot.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
+		plot.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
+		plot.getGraphWidget().getGridBackgroundPaint().setColor(Color.WHITE);
+		plot.setRangeBoundaries(min - 5, max + 5, BoundaryMode.FIXED);
+
+		// On trace la courbe avec ses coordonnées X et Y, et on lui donne un nom.
+		XYSeries courbe_temp = new SimpleXYSeries(Arrays.asList(temperaturesX), Arrays.asList(temperaturesY),
+				"Température de la baie en °C");
+
+		// On définit la couleur de la courbe, la couleur des points, le transparent sous la courbe,
+		// et la couleur des valeurs de chaque point.
+		plot.addSeries(courbe_temp, new LineAndPointFormatter(Color.rgb(255, 0, 0), Color.rgb(0, 0, 0),
+				Color.argb(20, 255, 0, 0), new PointLabelFormatter(Color.BLACK)));
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_plot_temp, menu);
+		return true;
+	}
+
 }

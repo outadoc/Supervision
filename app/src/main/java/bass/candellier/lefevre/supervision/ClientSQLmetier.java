@@ -10,108 +10,114 @@ import java.sql.Statement;
 
 public class ClientSQLmetier {
 
-    private static final String TAG = "";
-    private String serveurBDD, nomBDD, userBDD, mdpBDD, portBDD, connexionStringBDD;
-    private Connection conn = null;
+	private static final String TAG = "";
+	private String serveurBDD, nomBDD, userBDD, mdpBDD, portBDD, connexionStringBDD;
+	private Connection conn = null;
 
-    public ClientSQLmetier(String serveurBDD, String nomBDD, String userBDD, String mdpBDD, String portBDD, int timeout) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        this.setServeurBDD(serveurBDD);
-        this.setNomBDD(nomBDD);
-        this.setUserBDD(userBDD);
-        this.setMdpBDD(mdpBDD);
-        this.setPortBDD(portBDD);
-        String to = String.valueOf(timeout);
-        setConnexionStringBDD("jdbc:jtds:sqlserver://" + getServeurBDD().toString() + ":" + getPortBDD().toString() + "/" + getNomBDD().toString() + ";encrypt=false;instance=SQLEXPRESS;loginTimeout=" + to + ";socketTimeout=" + to + ";");
-        Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-        DriverManager.setLoginTimeout(timeout);
-    }
+	public ClientSQLmetier(String serveurBDD, String nomBDD, String userBDD, String mdpBDD, String portBDD,
+	                       int timeout) throws SQLException, InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
 
-    public ResultSet getTableUsageDD(int nb) throws SQLException {
-        if (conn == null) {
-            conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
-        }
-        Log.i(TAG, "open BDD");
+		this.setServeurBDD(serveurBDD);
+		this.setNomBDD(nomBDD);
+		this.setUserBDD(userBDD);
+		this.setMdpBDD(mdpBDD);
+		this.setPortBDD(portBDD);
 
-        Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date DESC");
-        return result;
-    }
+		String to = String.valueOf(timeout);
+		setConnexionStringBDD("jdbc:jtds:sqlserver://" + getServeurBDD() + ":" + getPortBDD() + "/" + getNomBDD() + ";" +
+				"encrypt=false;instance=SQLEXPRESS;loginTimeout=" + to + ";socketTimeout=" + to + ";");
 
-    public ResultSet getTableUsageMP(int nb) throws SQLException {
-        if (conn == null) {
-            conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
-        }
-        Log.i(TAG, "open BDD");
-        Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageMP ORDER BY date DESC");
-        return result;
-    }
+		Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+		DriverManager.setLoginTimeout(timeout);
+	}
 
-    public ResultSet getTableTemperatures(int nb) throws SQLException {
-        if (conn == null) {
-            conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
-        }
-        Log.i(TAG, "open BDD");
-        Statement stmt = conn.createStatement();
-        ResultSet result =stmt.executeQuery("SELECT TOP " + nb + " * FROM Temperatures ORDER BY date DESC");
-        return result;
-    }
+	public ResultSet getTableUsageDD(int nb) throws SQLException {
+		if(conn == null) {
+			conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
+		}
 
-    public void finalize() {
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+		Log.i(TAG, "open BDD");
 
-    public String getServeurBDD() {
-        return serveurBDD;
-    }
+		Statement stmt = conn.createStatement();
+		return stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date DESC");
+	}
 
-    public void setServeurBDD(String serveurBDD) {
-        this.serveurBDD = serveurBDD;
-    }
+	public ResultSet getTableUsageMP(int nb) throws SQLException {
+		if(conn == null) {
+			conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
+		}
 
-    public String getNomBDD() {
-        return nomBDD;
-    }
+		Log.i(TAG, "open BDD");
+		Statement stmt = conn.createStatement();
+		return stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageMP ORDER BY date DESC");
+	}
 
-    public void setNomBDD(String nomBDD) {
-        this.nomBDD = nomBDD;
-    }
+	public ResultSet getTableTemperatures(int nb) throws SQLException {
+		if(conn == null) {
+			conn = DriverManager.getConnection(this.connexionStringBDD, this.userBDD, this.mdpBDD);
+		}
 
-    public String getMdpBDD() {
-        return mdpBDD;
-    }
+		Log.i(TAG, "open BDD");
+		Statement stmt = conn.createStatement();
+		return stmt.executeQuery("SELECT TOP " + nb + " * FROM Temperatures ORDER BY date DESC");
+	}
 
-    public void setMdpBDD(String mdpBDD) {
-        this.mdpBDD = mdpBDD;
-    }
+	public void finalize() {
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    public String getPortBDD() {
-        return portBDD;
-    }
+	public String getServeurBDD() {
+		return serveurBDD;
+	}
 
-    public void setPortBDD(String portBDD) {
-        this.portBDD = portBDD;
-    }
+	public void setServeurBDD(String serveurBDD) {
+		this.serveurBDD = serveurBDD;
+	}
 
-    public String getConnexionStringBDD() {
-        return connexionStringBDD;
-    }
+	public String getNomBDD() {
+		return nomBDD;
+	}
 
-    public void setConnexionStringBDD(String connexionStringBDD) {
-        this.connexionStringBDD = connexionStringBDD;
-    }
+	public void setNomBDD(String nomBDD) {
+		this.nomBDD = nomBDD;
+	}
 
-    public String getUserBDD() {
-        return userBDD;
-    }
+	public String getMdpBDD() {
+		return mdpBDD;
+	}
 
-    public void setUserBDD(String userBDD) {
-        this.userBDD = userBDD;
-    }
+	public void setMdpBDD(String mdpBDD) {
+		this.mdpBDD = mdpBDD;
+	}
+
+	public String getPortBDD() {
+		return portBDD;
+	}
+
+	public void setPortBDD(String portBDD) {
+		this.portBDD = portBDD;
+	}
+
+	public String getConnexionStringBDD() {
+		return connexionStringBDD;
+	}
+
+	public void setConnexionStringBDD(String connexionStringBDD) {
+		this.connexionStringBDD = connexionStringBDD;
+	}
+
+	public String getUserBDD() {
+		return userBDD;
+	}
+
+	public void setUserBDD(String userBDD) {
+		this.userBDD = userBDD;
+	}
 }

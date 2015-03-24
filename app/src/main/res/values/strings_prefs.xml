@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Paramètres du serveur BDD -->
+	<!-- Paramètres du serveur BDD -->
 	<string name="default_pref_bdd_hostname" translatable="false">82.233.223.249</string>
 	<string name="default_pref_bdd_port" translatable="false">1433</string>
 	<string name="default_pref_bdd_username" translatable="false">supervision</string>
 	<string name="default_pref_bdd_password" translatable="false">Password1234</string>
 
-    <!-- Paramètres du serveur SNMP -->
+	<!-- Paramètres du serveur SNMP -->
 	<string name="default_pref_snmp_hostname" translatable="false">82.233.223.249</string>
 	<string name="default_pref_snmp_port" translatable="false">161</string>
 	<string name="default_pref_snmp_password" translatable="false">DataCenterVDR</string>
 
-    <!-- Paramètres de la sonde témperature SNMP -->
+	<!-- Paramètres de la sonde témperature SNMP -->
 	<string name="default_pref_snmp_temp_hostname" translatable="false">82.233.223.249</string>
 	<string name="default_pref_snmp_temp_port" translatable="false">1610</string>
 	<string name="default_pref_snmp_temp_password" translatable="false">DataCenterVDR</string>
 
-    <!-- Divers -->
-    <string name="default_number_values" translatable="false">10</string>
+	<!-- Divers -->
+	<string name="default_number_values" translatable="false">10</string>
 
 </resources>

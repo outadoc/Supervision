@@ -15,37 +15,29 @@ import java.util.ArrayList;
 
 public class ArrayUsageMPAdapter extends ArrayAdapter<UsageMP> {
 
-	// Déclaration d'une liste d'items
-	private ArrayList<UsageMP> objets;
-	private int item_id;
-
 	public ArrayUsageMPAdapter(Context context, int textViewResourceId, ArrayList<UsageMP> objects) {
 		super(context, textViewResourceId, objects);
-		this.objets = objects;
-		this.item_id = textViewResourceId;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-
-		if(v == null) {
+		if(convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = inflater.inflate(R.layout.cpu_list, null);
+			convertView = inflater.inflate(R.layout.cpu_list, null);
 		}
 
-		UsageMP uCourant = objets.get(position);
+		UsageMP uCourant = getItem(position);
 
 		if(uCourant != null) {
-			TextView tv_MP1 = (TextView) v.findViewById(R.id.cpu1);
-			TextView tv_MP2 = (TextView) v.findViewById(R.id.cpu2);
-			TextView tv_MP3 = (TextView) v.findViewById(R.id.cpu3);
-			TextView tv_MP4 = (TextView) v.findViewById(R.id.cpu4);
-			TextView tv_MP5 = (TextView) v.findViewById(R.id.cpu5);
-			TextView tv_MP6 = (TextView) v.findViewById(R.id.cpu6);
-			TextView tv_MP7 = (TextView) v.findViewById(R.id.cpu7);
-			TextView tv_MP8 = (TextView) v.findViewById(R.id.cpu8);
+			TextView tv_MP1 = (TextView) convertView.findViewById(R.id.cpu1);
+			TextView tv_MP2 = (TextView) convertView.findViewById(R.id.cpu2);
+			TextView tv_MP3 = (TextView) convertView.findViewById(R.id.cpu3);
+			TextView tv_MP4 = (TextView) convertView.findViewById(R.id.cpu4);
+			TextView tv_MP5 = (TextView) convertView.findViewById(R.id.cpu5);
+			TextView tv_MP6 = (TextView) convertView.findViewById(R.id.cpu6);
+			TextView tv_MP7 = (TextView) convertView.findViewById(R.id.cpu7);
+			TextView tv_MP8 = (TextView) convertView.findViewById(R.id.cpu8);
 
-			TextView tv_sdate = (TextView) v.findViewById(R.id.sdate);
+			TextView tv_sdate = (TextView) convertView.findViewById(R.id.sdate);
 
 			tv_MP1.setText(String.valueOf(uCourant.getUmp1()) + "%");
 			tv_MP2.setText(String.valueOf(uCourant.getUmp2()) + "%");
@@ -59,6 +51,7 @@ public class ArrayUsageMPAdapter extends ArrayAdapter<UsageMP> {
 			tv_sdate.setText(uCourant.getSdate());
 		}
 
-		return v;
+		return convertView;
 	}
+
 }

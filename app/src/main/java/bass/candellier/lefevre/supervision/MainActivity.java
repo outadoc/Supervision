@@ -65,32 +65,32 @@ public class MainActivity extends ActionBarActivity {
 		CardView cardDisque = (CardView) findViewById(R.id.card_disque);
 		CardView cardCPU = (CardView) findViewById(R.id.card_cpu);
 
-        // Si il y a un accès réseau, le clic sur l'un des boutons lance l'activité correspondante.
-        if (this.isNetworkAvailable()) {
-            cardTemp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, StatsTempActivity.class));
-                }
-            });
-            cardDisque.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, StatsDDActivity.class));
-                }
-            });
-            cardCPU.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, StatsMPActivity.class));
-                }
-            });
-        } else {
-            ListenerAccessDenied accessDenied = new ListenerAccessDenied();
-            cardTemp.setOnClickListener(accessDenied);
-            cardDisque.setOnClickListener(accessDenied);
-            cardCPU.setOnClickListener(accessDenied);
-        }
+		// Si il y a un accès réseau, le clic sur l'un des boutons lance l'activité correspondante.
+		if(this.isNetworkAvailable()) {
+			cardTemp.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(MainActivity.this, StatsTempActivity.class));
+				}
+			});
+			cardDisque.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(MainActivity.this, StatsDDActivity.class));
+				}
+			});
+			cardCPU.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(MainActivity.this, StatsMPActivity.class));
+				}
+			});
+		} else {
+			ListenerAccessDenied accessDenied = new ListenerAccessDenied();
+			cardTemp.setOnClickListener(accessDenied);
+			cardDisque.setOnClickListener(accessDenied);
+			cardCPU.setOnClickListener(accessDenied);
+		}
 	}
 
 	@Override
@@ -259,17 +259,17 @@ public class MainActivity extends ActionBarActivity {
 		hasBeenNotifiedOfRefresh = true;
 	}
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+	private boolean isNetworkAvailable() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
 
-    private class ListenerAccessDenied implements View.OnClickListener {
+	private class ListenerAccessDenied implements View.OnClickListener {
 
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Pas d'accès réseau.", Toast.LENGTH_LONG).show();
-        }
-    }
+		@Override
+		public void onClick(View v) {
+			Toast.makeText(MainActivity.this, "Pas d'accès réseau.", Toast.LENGTH_LONG).show();
+		}
+	}
 }
