@@ -20,9 +20,8 @@ import java.util.ArrayList;
 public class StatsTempActivity extends ActionBarActivity {
 
     public static final int n = 10;
-    private static final String LISTE_TEMP_KEY = "";
+    private static final String LISTE_TEMP_KEY = PlotTempActivity.getListeTempKey();
     private static final String ARRAY_TEMP_KEY = "";
-    private Button btnPlotTemp;
     private ListView listeView;
     private ProgressDialog progressDialog;
     private ClientSQLmetier clientBdd;
@@ -56,7 +55,7 @@ public class StatsTempActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings: {
-                startActivity(new Intent(this, PlotTempActivity.class).putParcelableArrayListExtra("temp", resRequete));
+                startActivity(new Intent(this, PlotTempActivity.class).putParcelableArrayListExtra(LISTE_TEMP_KEY, resRequete));
                 return true;
             }
         }

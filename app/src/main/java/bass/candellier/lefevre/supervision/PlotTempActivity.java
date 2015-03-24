@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class PlotTempActivity extends ActionBarActivity {
 
-    private static final String LISTE_TEMP_KEY = "";
+    private static final String LISTE_TEMP_KEY = "temp";
     private XYPlot plot;
     private ArrayList<Temp> resRequete = new ArrayList<>();
     private Number[] temperaturesX;
@@ -33,7 +33,7 @@ public class PlotTempActivity extends ActionBarActivity {
         setContentView(R.layout.activity_plot_temp);
 
         // On récupère toutes les données.
-        resRequete = this.getIntent().getParcelableArrayListExtra("temp");
+        resRequete = this.getIntent().getParcelableArrayListExtra(LISTE_TEMP_KEY);
 
         // On isole les températures.
         temperaturesY = new Number[resRequete.size()];
@@ -94,5 +94,9 @@ public class PlotTempActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_plot_temp, menu);
         return true;
+    }
+
+    public static String getListeTempKey() {
+        return LISTE_TEMP_KEY;
     }
 }

@@ -20,9 +20,8 @@ import java.util.ArrayList;
 public class StatsDDActivity extends ActionBarActivity {
 
     public static final int n = 10;
-    private static final String LISTE_DD_KEY = "";
+    private static final String LISTE_DD_KEY = PlotDDActivity.getListeDdKey();
     private static final String ARRAY_DD_KEY = "";
-    private Button btnPlotDD;
     private ListView listeView;
     private ProgressDialog progressDialog;
     private ClientSQLmetier clientBdd;
@@ -56,7 +55,7 @@ public class StatsDDActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings: {
-                startActivity(new Intent(this, PlotDDActivity.class).putParcelableArrayListExtra("dd", resRequete));
+                startActivity(new Intent(this, PlotDDActivity.class).putParcelableArrayListExtra(LISTE_DD_KEY, resRequete));
                 return true;
             }
         }

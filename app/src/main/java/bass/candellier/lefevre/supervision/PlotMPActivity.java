@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class PlotMPActivity extends ActionBarActivity {
 
-    private static final String LISTE_MP_KEY = "";
+    private static final String LISTE_MP_KEY = "mp";
     private XYPlot plot;
     private ArrayList<UsageMP> resRequete = new ArrayList<>();
     private Number[] usageMPX;
@@ -33,7 +33,7 @@ public class PlotMPActivity extends ActionBarActivity {
         setContentView(R.layout.activity_plot_mp);
 
         // On récupère toutes les données.
-        resRequete = this.getIntent().getParcelableArrayListExtra("mp");
+        resRequete = this.getIntent().getParcelableArrayListExtra(LISTE_MP_KEY);
 
         // On isole les températures.
         usageMPY = new Number[resRequete.size()];
@@ -115,5 +115,9 @@ public class PlotMPActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_plot_mp, menu);
         return true;
+    }
+
+    public static String getListeMpKey() {
+        return LISTE_MP_KEY;
     }
 }

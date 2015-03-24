@@ -19,15 +19,13 @@ import java.util.ArrayList;
 
 public class StatsMPActivity extends ActionBarActivity {
 
-    private static final String LISTE_MP_KEY = "";
+    public static final int n = 10;
+    private static final String LISTE_MP_KEY = PlotMPActivity.getListeMpKey();
     private static final String ARRAY_MP_KEY = "";
-    private Button btnPlotMP;
     private ListView listeView;
     private ProgressDialog progressDialog;
-    private ProgressDialog dialogP;
     private ClientSQLmetier clientBDD;
     private ArrayList<UsageMP> resRequete = new ArrayList<>();
-    private int n=10;
 
     public StatsMPActivity() {
     }
@@ -56,7 +54,7 @@ public class StatsMPActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings: {
-                startActivity(new Intent(this, PlotMPActivity.class).putParcelableArrayListExtra("mp", resRequete));
+                startActivity(new Intent(this, PlotMPActivity.class).putParcelableArrayListExtra(LISTE_MP_KEY, resRequete));
                 return true;
             }
         }

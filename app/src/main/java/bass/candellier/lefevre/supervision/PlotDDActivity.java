@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class PlotDDActivity extends ActionBarActivity {
 
-    private static final String LISTE_DD_KEY = "";
+    private static final String LISTE_DD_KEY = "dd";
     private XYPlot plot;
     private ArrayList<UsageDD> resRequete = new ArrayList<>();
     private Number[] usageDDX;
@@ -33,7 +33,7 @@ public class PlotDDActivity extends ActionBarActivity {
         setContentView(R.layout.activity_plot_dd);
 
         // On récupère toutes les données.
-        resRequete = this.getIntent().getParcelableArrayListExtra("dd");
+        resRequete = this.getIntent().getParcelableArrayListExtra(LISTE_DD_KEY);
 
         // On isole les usages.
         usageDDY = new Number[resRequete.size()];
@@ -111,5 +111,9 @@ public class PlotDDActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_plot_temp, menu);
         return true;
+    }
+
+    public static String getListeDdKey() {
+        return LISTE_DD_KEY;
     }
 }
