@@ -72,7 +72,7 @@ public class StatsMPActivity extends ActionBarActivity {
     }
 
     public class Recuperation extends AsyncTask<Void, Void, Void> {
-        ArrayAdapter<UsageDD> liste;
+        ArrayAdapter<UsageMP> liste;
 
         @Override
         protected void onPreExecute() {
@@ -112,7 +112,7 @@ public class StatsMPActivity extends ActionBarActivity {
                 progressDialog.dismiss();
             }
 
-            liste = new ArrayAdapter(StatsMPActivity.this, android.R.layout.simple_list_item_1, resRequete);
+            liste = new ArrayUsageMPAdapter(StatsMPActivity.this,R.layout.cpu_list, resRequete);
             listeView.setAdapter(liste);
             liste.notifyDataSetChanged();
         }

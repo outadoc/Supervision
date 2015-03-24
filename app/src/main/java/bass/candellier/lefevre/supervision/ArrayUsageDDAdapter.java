@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
+
+
 public class ArrayUsageDDAdapter extends ArrayAdapter<UsageDD> { // Déclaration d'une liste d'items
     private ArrayList<UsageDD> objets;
     private int item_id;
@@ -39,7 +42,7 @@ public class ArrayUsageDDAdapter extends ArrayAdapter<UsageDD> { // Déclaration
             ImageView icone = (ImageView) v.findViewById(R.id.imgThermometre);
             if (tv_DD != null) tv_DD.setText(String.valueOf(uCourant.getUsage())+"%");
             if (tv_sdate != null) tv_sdate.setText(uCourant.getSdate());
-            if (tv_nomBaie != null) tv_nomBaie.setText(String.valueOf(Math.round((uCourant.getCapacite()-uCourant.getUtilisation())/1000000))+" Mo");
+            if (tv_nomBaie != null) tv_nomBaie.setText(String.valueOf(Math.round((uCourant.getCapacite()-uCourant.getUtilisation())/1000000))+"Mo");
 
             //if (icone != null) icone.setImageResource(R.drawable.thermometre);
         }
