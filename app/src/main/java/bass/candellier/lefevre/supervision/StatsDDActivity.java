@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.sql.ResultSet;
@@ -19,9 +20,9 @@ import java.util.ArrayList;
 
 public class StatsDDActivity extends ActionBarActivity {
 
-    public static final int n = 10;
     private static final String LISTE_DD_KEY = PlotDDActivity.getListeDdKey();
     private static final String ARRAY_DD_KEY = "";
+    private int n = 10;
     private ListView listeView;
     private ProgressDialog progressDialog;
     private ClientSQLmetier clientBdd;
@@ -35,6 +36,10 @@ public class StatsDDActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        n = Integer.valueOf(prefs.getString("PREFKEY_NB_VALUES", "10"));
+
         setContentView(R.layout.activity_stats_dd);
         listeView = (ListView) findViewById(R.id.liste_stats_dd);
         new Recuperation().execute();

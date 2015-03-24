@@ -81,4 +81,17 @@
 
 	</PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="Divers">
+
+        <EditTextPreference
+            android:key="PREFKEY_NB_VALUES"
+            android:id="@+id/pref_number_values"
+            android:inputType="numberDecimal"
+            android:title="Nombre de valeurs"
+            android:summary="Entez le nombre de valeurs à retourner"
+            android:defaultValue="@string/default_number_values" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

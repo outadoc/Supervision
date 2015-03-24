@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class StatsMPActivity extends ActionBarActivity {
 
-    public static final int n = 10;
     private static final String LISTE_MP_KEY = PlotMPActivity.getListeMpKey();
     private static final String ARRAY_MP_KEY = "";
+    private int n = 10;
     private ListView listeView;
     private ProgressDialog progressDialog;
     private ClientSQLmetier clientBDD;
@@ -34,6 +34,10 @@ public class StatsMPActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        n = Integer.valueOf(prefs.getString("PREFKEY_NB_VALUES", "10"));
+
         setContentView(R.layout.activity_stats_dd);
         listeView = (ListView) findViewById(R.id.liste_stats_dd);
         new Recuperation().execute();
