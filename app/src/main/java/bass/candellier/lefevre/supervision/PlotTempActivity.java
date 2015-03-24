@@ -69,7 +69,6 @@ public class PlotTempActivity extends ActionBarActivity {
         plot.setTitle("Températures du " + resRequete.get(0).getSdate() + " au " + resRequete.get(resRequete.size() - 1).getSdate());
         plot.setRangeLabel("°C");
         plot.setDomainLabel("Temps relatif");
-        plot.setRangeBoundaries(min - 5, max + 5, BoundaryMode.FIXED);
         plot.getBorderPaint().setColor(Color.BLACK);
         plot.getBackgroundPaint().setColor(Color.BLACK);
         plot.setDrawingCacheBackgroundColor(Color.BLACK);
@@ -77,6 +76,7 @@ public class PlotTempActivity extends ActionBarActivity {
         plot.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
         plot.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
         plot.getGraphWidget().getGridBackgroundPaint().setColor(Color.WHITE);
+        plot.setRangeBoundaries(min - 5, max + 5, BoundaryMode.FIXED);
 
         // On trace la courbe avec ses coordonnées X et Y, et on lui donne un nom.
         XYSeries courbe_temp = new SimpleXYSeries(Arrays.asList(temperaturesX), Arrays.asList(temperaturesY), "Température de la baie en °C");

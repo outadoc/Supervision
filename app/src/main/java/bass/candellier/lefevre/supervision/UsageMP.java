@@ -1,6 +1,9 @@
 package bass.candellier.lefevre.supervision;
 
-public class UsageMP {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class UsageMP implements Parcelable {
     private String sdate;
     private int nbprocs;
     private int ump1;
@@ -11,6 +14,15 @@ public class UsageMP {
     private int ump6;
     private int ump7;
     private int ump8;
+    public static final Parcelable.Creator<UsageMP> CREATOR = new Parcelable.Creator<UsageMP>() {
+        public UsageMP createFromParcel(Parcel in) {
+            return new UsageMP(in);
+        }
+
+        public UsageMP[] newArray(int size) {
+            return new UsageMP[size];
+        }
+    };
 
     public UsageMP(String sdate, int nbprocs, int ump1, int ump2, int ump3, int ump4, int ump5, int ump6, int ump7, int ump8) {
         this.sdate = sdate;
@@ -25,10 +37,39 @@ public class UsageMP {
         this.ump8 = ump8;
     }
 
+    public UsageMP(Parcel in) {
+        readFromParcel(in);
+    }
+
     public int describeContents(){
-
-
         return 0;
+    }
+
+    private void readFromParcel(Parcel in) {
+        this.sdate = in.readString();
+        this.nbprocs = in.readInt();
+        this.ump1 = in.readInt();
+        this.ump2 = in.readInt();
+        this.ump3 = in.readInt();
+        this.ump4 = in.readInt();
+        this.ump5 = in.readInt();
+        this.ump6 = in.readInt();
+        this.ump7 = in.readInt();
+        this.ump8 = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.sdate);
+        dest.writeInt(this.nbprocs);
+        dest.writeInt(this.ump1);
+        dest.writeInt(this.ump2);
+        dest.writeInt(this.ump3);
+        dest.writeInt(this.ump4);
+        dest.writeInt(this.ump5);
+        dest.writeInt(this.ump6);
+        dest.writeInt(this.ump7);
+        dest.writeInt(this.ump8);
     }
 
     public String getSdate() {
