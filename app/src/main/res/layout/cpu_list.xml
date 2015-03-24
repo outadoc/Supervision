@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:gravity="center"
+	android:gravity="center_vertical"
 	android:orientation="horizontal">
 
 	<TextView
@@ -11,61 +11,84 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="20dp"
-		android:layout_marginRight="20dp" />
+		android:layout_marginRight="20dp"
+		android:textSize="17sp" />
 
-	<GridLayout
-		android:layout_width="match_parent"
+	<LinearLayout
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:columnCount="4">
+		android:orientation="vertical">
 
-		<TextView
-			android:id="@+id/cpu1"
+		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			android:orientation="horizontal">
 
-		<TextView
-			android:id="@+id/cpu2"
+			<TextView
+				android:id="@+id/cpu1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/cpu2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/cpu3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/cpu4"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
+
+		</LinearLayout>
+
+		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			android:orientation="horizontal">
 
-		<TextView
-			android:id="@+id/cpu3"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			<TextView
+				android:id="@+id/cpu5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
 
-		<TextView
-			android:id="@+id/cpu4"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			<TextView
+				android:id="@+id/cpu6"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
 
-		<TextView
-			android:id="@+id/cpu5"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			<TextView
+				android:id="@+id/cpu7"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
 
-		<TextView
-			android:id="@+id/cpu6"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+			<TextView
+				android:id="@+id/cpu8"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:textSize="15sp" />
 
-		<TextView
-			android:id="@+id/cpu7"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
+		</LinearLayout>
 
-		<TextView
-			android:id="@+id/cpu8"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5dp" />
-
-	</GridLayout>
+	</LinearLayout>
 
 </LinearLayout>
