@@ -38,7 +38,6 @@ public class ClientSQLmetier {
 		}
 
 		Log.i(TAG, "open BDD");
-
 		Statement stmt = conn.createStatement();
 		return stmt.executeQuery("SELECT TOP " + nb + " * FROM UsageDD ORDER BY date DESC");
 	}

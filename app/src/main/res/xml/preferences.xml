@@ -3,94 +3,94 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<PreferenceCategory
-		android:title="Paramètres du serveur BDD">
+		android:title="@string/title_server_bdd">
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_hostname"
 			android:defaultValue="@string/default_pref_bdd_hostname"
 			android:key="PREFKEY_HOSTNAME"
-			android:summary="Entrez le nom d'hôte du serveur SQL Express"
-			android:title="Nom d'hôte" />
+			android:summary="@string/summary_bdd_hostname"
+			android:title="@string/title_bdd_hostname" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_port"
 			android:defaultValue="@string/default_pref_bdd_port"
 			android:key="PREFKEY_PORT"
-			android:summary="Entrez le numéro de port du serveur SQL Express"
-			android:title="Port" />
+			android:summary="@string/summary_bdd_port"
+			android:title="@string/title_bdd_port" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_username"
 			android:defaultValue="@string/default_pref_bdd_username"
 			android:key="PREFKEY_USERNAME"
-			android:summary="Entrez le nom du compte autorisé"
-			android:title="Nom d'utilisateur" />
+			android:summary="@string/summary_bdd_username"
+			android:title="@string/title_bdd_username" />
 
 		<EditTextPreference
 			android:id="@+id/pref_bdd_password"
 			android:defaultValue="@string/default_pref_bdd_password"
 			android:key="PREFKEY_PASSWORD"
-			android:summary="Entrez le mot de passe de connexion"
-			android:title="Mot de passe" />
+			android:summary="@string/summary_bdd_password"
+			android:title="@string/title_bdd_password" />
 
 	</PreferenceCategory>
 
 	<PreferenceCategory
-		android:title="Paramètres du serveur SNMP">
+		android:title="@string/title_server_snmp">
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_hostname"
 			android:key="pref_snmp_hostname"
-			android:summary="Entez le nom d'hôte du serveur SNMP"
-			android:title="Nom d'hôte" />
+			android:summary="@string/summary_snmp_hostname"
+			android:title="@string/title_snmp_hostname" />
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_port"
 			android:key="pref_snmp_port"
-			android:summary="Entrez le numéro de port du serveur SNMP"
-			android:title="Port SNMP" />
+			android:summary="@string/summary_snmp_port"
+			android:title="@string/title_snmp_port" />
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_password"
 			android:key="pref_snmp_password"
-			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture"
-			android:title="Communauté SNMP en lecture" />
+			android:summary="@string/summary_snmp_password"
+			android:title="@string/title_snmp_password" />
 
 	</PreferenceCategory>
 
 	<PreferenceCategory
-		android:title="Paramètres de la sonde température SNMP">
+		android:title="@string/title_snmp_temp">
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_temp_hostname"
 			android:key="pref_snmp_temp_hostname"
-			android:summary="Entez le nom d'hôte de la sonde SNMP"
-			android:title="Nom d'hôte" />
+			android:summary="@string/summary_snmp_temp_hostname"
+			android:title="@string/title_snmp_temp_hostname" />
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_temp_port"
 			android:key="pref_snmp_temp_port"
-			android:summary="Entrez le numéro de port de la sonde SNMP"
-			android:title="Port SNMP" />
+			android:summary="@string/summary_snmp_temp_port"
+			android:title="@string/title_snmp_temp_port" />
 
 		<EditTextPreference
 			android:defaultValue="@string/default_pref_snmp_temp_password"
 			android:key="pref_snmp_temp_password"
-			android:summary="Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde"
-			android:title="Communauté SNMP en lecture" />
+			android:summary="@string/summary_snmp_temp_password"
+			android:title="@string/title_snmp_temp_password" />
 
 	</PreferenceCategory>
 
 	<PreferenceCategory
-		android:title="Divers">
+		android:title="@string/title_miscellaneous">
 
 		<EditTextPreference
 			android:id="@+id/pref_number_values"
 			android:defaultValue="@string/default_number_values"
 			android:inputType="numberDecimal"
 			android:key="PREFKEY_NB_VALUES"
-			android:summary="Entez le nombre de valeurs à retourner"
-			android:title="Nombre de valeurs" />
+			android:summary="@string/summary_miscellaneous_number_values"
+			android:title="@string/title_miscellaneous_number_values" />
 
 	</PreferenceCategory>
 

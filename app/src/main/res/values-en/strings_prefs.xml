@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- Paramètres du serveur BDD -->
+    <!-- Paramètres du serveur BDD -->
     <string name="title_server_bdd">Paramètres du serveur BDD</string>
     <string name="summary_bdd_hostname">Entrez le nom d\'hôte du serveur SQL Express</string>
     <string name="title_bdd_hostname">Nom d\'hôte</string>
@@ -14,9 +14,9 @@
     <string name="default_pref_bdd_username" translatable="false">supervision</string>
     <string name="summary_bdd_password">Entrez le mot de passe de connexion</string>
     <string name="title_bdd_password">Mot de passe</string>
-	<string name="default_pref_bdd_password" translatable="false">Password1234</string>
+    <string name="default_pref_bdd_password" translatable="false">Password1234</string>
 
-	<!-- Paramètres du serveur SNMP -->
+    <!-- Paramètres du serveur SNMP -->
     <string name="title_server_snmp">Paramètres du serveur SNMP</string>
     <string name="summary_snmp_hostname">Entez le nom d\'hôte du serveur SNMP</string>
     <string name="title_snmp_hostname">Nom d\'hôte</string>
@@ -26,9 +26,9 @@
     <string name="default_pref_snmp_port" translatable="false">161</string>
     <string name="summary_snmp_password">Entrez le nom de la communauté SNMP autorisée en lecture</string>
     <string name="title_snmp_password">Communauté SNMP en lecture</string>
-	<string name="default_pref_snmp_password" translatable="false">DataCenterVDR</string>
+    <string name="default_pref_snmp_password" translatable="false">DataCenterVDR</string>
 
-	<!-- Paramètres de la sonde témperature SNMP -->
+    <!-- Paramètres de la sonde témperature SNMP -->
     <string name="title_snmp_temp">Paramètres de la sonde température SNMP</string>
     <string name="summary_snmp_temp_hostname">Entez le nom d\'hôte de la sonde SNMP</string>
     <string name="title_snmp_temp_hostname">Nom d\'hôte</string>
@@ -38,12 +38,12 @@
     <string name="default_pref_snmp_temp_port" translatable="false">1610</string>
     <string name="summary_snmp_temp_password">Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde</string>
     <string name="title_snmp_temp_password">Communauté SNMP en lecture</string>
-	<string name="default_pref_snmp_temp_password" translatable="false">DataCenterVDR</string>
+    <string name="default_pref_snmp_temp_password" translatable="false">DataCenterVDR</string>
 
-	<!-- Divers -->
+    <!-- Divers -->
     <string name="title_miscellaneous">Divers</string>
     <string name="summary_miscellaneous_number_values">Entez le nombre de valeurs à retourner</string>
     <string name="title_miscellaneous_number_values">Nombre de valeurs</string>
-	<string name="default_number_values" translatable="false">10</string>
+    <string name="default_number_values" translatable="false">10</string>
 
 </resources>
