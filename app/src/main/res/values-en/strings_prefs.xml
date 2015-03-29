@@ -2,48 +2,37 @@
 <resources>
 
     <!-- Paramètres du serveur BDD -->
-    <string name="title_server_bdd">Paramètres du serveur BDD</string>
-    <string name="summary_bdd_hostname">Entrez le nom d\'hôte du serveur SQL Express</string>
-    <string name="title_bdd_hostname">Nom d\'hôte</string>
-    <string name="default_pref_bdd_hostname" translatable="false">82.233.223.249</string>
-    <string name="summary_bdd_port">Entrez le numéro de port du serveur SQL Express</string>
+    <string name="title_server_bdd">Database Server</string>
+    <string name="summary_bdd_hostname">SQL Express server hostname</string>
+    <string name="title_bdd_hostname">Hostname</string>
+	<string name="summary_bdd_port">SQL Express server port number</string>
     <string name="title_bdd_port">Port</string>
-    <string name="default_pref_bdd_port" translatable="false">1433</string>
-    <string name="summary_bdd_username">Entrez le nom du compte autorisé</string>
-    <string name="title_bdd_username">Nom d\'utilisateur</string>
-    <string name="default_pref_bdd_username" translatable="false">supervision</string>
-    <string name="summary_bdd_password">Entrez le mot de passe de connexion</string>
-    <string name="title_bdd_password">Mot de passe</string>
-    <string name="default_pref_bdd_password" translatable="false">Password1234</string>
+	<string name="summary_bdd_username">SQL server usename</string>
+    <string name="title_bdd_username">Username</string>
+	<string name="summary_bdd_password">SQL server password</string>
+    <string name="title_bdd_password">Password</string>
 
-    <!-- Paramètres du serveur SNMP -->
-    <string name="title_server_snmp">Paramètres du serveur SNMP</string>
-    <string name="summary_snmp_hostname">Entez le nom d\'hôte du serveur SNMP</string>
-    <string name="title_snmp_hostname">Nom d\'hôte</string>
-    <string name="default_pref_snmp_hostname" translatable="false">82.233.223.249</string>
-    <string name="summary_snmp_port">Entrez le numéro de port du serveur SNMP</string>
-    <string name="title_snmp_port">Port SNMP</string>
-    <string name="default_pref_snmp_port" translatable="false">161</string>
-    <string name="summary_snmp_password">Entrez le nom de la communauté SNMP autorisée en lecture</string>
-    <string name="title_snmp_password">Communauté SNMP en lecture</string>
-    <string name="default_pref_snmp_password" translatable="false">DataCenterVDR</string>
+	<!-- Paramètres du serveur SNMP -->
+    <string name="title_server_snmp">SNMP Server</string>
+    <string name="summary_snmp_hostname">SNMP server hostname</string>
+    <string name="title_snmp_hostname">Hostname</string>
+	<string name="summary_snmp_port">SNMP server port number</string>
+    <string name="title_snmp_port">SNMP Port</string>
+	<string name="summary_snmp_password">SNMP read-only community</string>
+    <string name="title_snmp_password">SNMP Read-only Community</string>
 
-    <!-- Paramètres de la sonde témperature SNMP -->
-    <string name="title_snmp_temp">Paramètres de la sonde température SNMP</string>
-    <string name="summary_snmp_temp_hostname">Entez le nom d\'hôte de la sonde SNMP</string>
-    <string name="title_snmp_temp_hostname">Nom d\'hôte</string>
-    <string name="default_pref_snmp_temp_hostname" translatable="false">82.233.223.249</string>
-    <string name="summary_snmp_temp_port">Entrez le numéro de port de la sonde SNMP</string>
-    <string name="title_snmp_temp_port">Port SNMP</string>
-    <string name="default_pref_snmp_temp_port" translatable="false">1610</string>
-    <string name="summary_snmp_temp_password">Entrez le nom de la communauté SNMP autorisée en lecture sur la sonde</string>
-    <string name="title_snmp_temp_password">Communauté SNMP en lecture</string>
-    <string name="default_pref_snmp_temp_password" translatable="false">DataCenterVDR</string>
+	<!-- Paramètres de la sonde témperature SNMP -->
+    <string name="title_snmp_temp">SNMP Temperature Probe</string>
+    <string name="summary_snmp_temp_hostname">SNMP probe server hostname</string>
+    <string name="title_snmp_temp_hostname">Hostname</string>
+	<string name="summary_snmp_temp_port">SNMP probe server port number</string>
+    <string name="title_snmp_temp_port">SNMP Port</string>
+	<string name="summary_snmp_temp_password">SNMP probe read-only community</string>
+    <string name="title_snmp_temp_password">Read-only SNMP Community</string>
 
-    <!-- Divers -->
-    <string name="title_miscellaneous">Divers</string>
-    <string name="summary_miscellaneous_number_values">Entez le nombre de valeurs à retourner</string>
-    <string name="title_miscellaneous_number_values">Nombre de valeurs</string>
-    <string name="default_number_values" translatable="false">10</string>
+	<!-- Divers -->
+    <string name="title_miscellaneous">Others</string>
+    <string name="summary_miscellaneous_number_values">The number of items to show in the lists</string>
+    <string name="title_miscellaneous_number_values">Measure Count</string>
 
 </resources>

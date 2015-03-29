@@ -42,8 +42,8 @@
 
 	<!-- Divers -->
     <string name="title_miscellaneous">Divers</string>
-    <string name="summary_miscellaneous_number_values">Entez le nombre de valeurs à retourner</string>
-    <string name="title_miscellaneous_number_values">Nombre de valeurs</string>
+    <string name="summary_miscellaneous_number_values">Entez le nombre de mesures à afficher</string>
+    <string name="title_miscellaneous_number_values">Nombre de mesures</string>
 	<string name="default_number_values" translatable="false">10</string>
 
 </resources>
